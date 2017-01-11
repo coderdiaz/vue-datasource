@@ -1,0 +1,55 @@
+{
+  "name": "vue-datasource",
+  "description": "A vue.js component to create tables from server side",
+  "version": "1.0.0",
+  "author": "Javier Diaz <coderdiaz@gmail.com>",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config  webpack.config.build.min.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  webpack.config.build.js && cross-env NODE_ENV=production webpack --progress --hide-modules --config  webpack.config.js"
+  },
+  "main": "dist/vue-datasource.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderdiaz/vue-datasource.git"
+  },
+  "keywords": [
+    "vue.js",
+    "component",
+    "vue-component",
+    "vue-datasource"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderdiaz/vue-datasource/issues"
+  },
+  "homepage": "https://github.com/coderdiaz/vue-datasource#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.0.0",
+    "babel-helper-vue-jsx-merge-props": "^2.0.1",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-syntax-jsx": "^6.13.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-plugin-transform-vue-jsx": "^3.1.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-runtime": "^6.0.0",
+    "cross-env": "^1.0.6",
+    "css-loader": "^0.23.0",
+    "expose-loader": "^0.7.1",
+    "file-loader": "^0.8.4",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.2.0",
+    "sass-loader": "^4.1.1",
+    "url-loader": "^0.5.7",
+    "vue": "^2.1.3",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^9.5.0",
+    "vue-style-loader": "^1.0.0",
+    "vue-template-compiler": "^2.1.3",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0"
+  }
+}

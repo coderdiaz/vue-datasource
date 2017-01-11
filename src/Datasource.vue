@@ -1,0 +1,163 @@
+<template>
+    <div class="vue-datasource">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="form-inline">
+                    <!--limits-->
+                    <div class="form-group pull-left">
+                        <label class="control-label pr2">{{ translation.table.label_limits }}</label>
+                        <select class="form-control" v-model="perpage" number>
+                            <option v-for="limit in limits" :value="limit">{{ limit }}</option>
+                        </select>
+                    </div><!--/limits-->
+                    <!--search-input-->
+                    <div class="form-group pull-right">
+                        <input class="form-control" type="text"
+                           v-model="search"
+                           :placeholder="translation.table.placeholder_search">
+                        <button type="button" class="btn btn-primary"
+                            @click.prevent="searching">{{ translation.table.label_search }}</button>
+                    </div><!--/search-input-->
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="panel-body Vue__panel-body">
+                <table class="table table-striped Vue__table">
+                    <thead>
+                        <tr>
+                            <th v-for="column in columns">{{ column.name }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-if="pagination.total == 0">
+                            <td :colspan="columns.length">{{ translation.table.records_not_found }}</td>
+                        </tr>
+                        <tr v-else
+                            :class="{ 'success': (index == indexSelected) }"
+                            v-for="(row, index) in tableData"
+                            @click.prevent="selectRow(row, index)">
+                            <td v-for="k in columns">
+                                {{ fetchFromObject(row, k.key, k.render) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center" :colspan="columns.length">
+                                {{ tableInfo }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer Vue__panel-footer">
+                <div class="pull-left">
+                    <div class="btn-group Vue__datasource_actions">
+                        <button class="btn btn-default" type="button"
+                            :class="btn.class"
+                            v-for="btn in actions"
+                            @click="btn.event($event, selected)">
+                            <i class="pr1" v-if="btn.icon" :class="btn.icon"></i>
+                            {{ btn.text }}
+                        </button>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <pagination
+                        :pages="pagination"
+                        @change="changePage"
+                        :translation="translation.pagination"></pagination>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</template>
+<script type="text/babel">
+    import Utils from './utils/DatasourceUtils';
+    import Language from './utils/DatasourceLanguage';
+    import Pagination from './components/Pagination.vue';
+
+    export default {
+        components: {
+            Pagination
+        },
+        props: {
+            tableData: {
+                type: Array,
+                required: true
+            },
+            language: {
+                type: String,
+                default: 'es'
+            },
+            columns: {
+                type: Array,
+                required: true
+            },
+            pagination: {
+                type: Object,
+                default() {
+                    return {
+                        total: 0,
+                        to: 0,
+                        from: 0,
+                        per_page: 15
+                    }
+                }
+            },
+            actions: {
+                type: Array,
+                default() {
+                    return []
+                }
+            }
+        },
+        data() {
+            return {
+                limits: [1, 5, 10, 15, 20],
+                perpage: 15,
+                selected: null,
+                indexSelected: -1,
+                search: ''
+            }
+        },
+        computed: {
+            translation() {
+                return Language.translations[this.language];
+            },
+            tableInfo: Utils.tableInfo
+        },
+        methods: {
+            fetchFromObject: Utils.fetchFromObject,
+            changePage: Utils.changePage,
+            selectRow: Utils.selectRow,
+            searching() {
+                this.selected = null;
+                this.$emit('searching', this.search);
+            }
+        },
+        watch: {
+            perpage() {
+                this.selected = null;
+                this.$emit('change', { perpage: this.perpage, page: 1 });
+            }
+        }
+    }
+</script>
+<style lang="sass" scoped>
+    .vue-datasource {
+
+        .Vue__panel-body {
+            padding: 0;
+            .Vue__table {
+                margin-bottom: 0;
+            }
+        }
+
+        .Vue__panel-footer {
+            .Vue__datasource_actions {
+                margin: 10px 0;
+            }
+        }
+
+    }
+</style>
