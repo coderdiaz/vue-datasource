@@ -18,7 +18,7 @@ $ npm install vue-datasource
             language="en"
             :table-data="information.data"
             :columns="columns"
-            :pagination="users.pagination"
+            :pagination="information.pagination"
             :actions="actions"
             v-on:change="changePage"
             v-on:searching="onSearch"></datasource>
