@@ -1,9 +1,9 @@
 # Vue Datasource
-#### A Vue.js component to create tables from Server SideCompatible with Vue 2.x
+#### A Vue.js component to create tables from Server Side. Compatible with Vue 2.x and Laravel
 
 ### Demo
 
-!['Example'](http://g.recordit.co/F9c92b277R.gif)
+Temporal: http://recordit.co/F9c92b277R
 
 Coming soon live demo ...
 
@@ -92,4 +92,4 @@ _You can add implementations send me your PR._
 ### Contributions 
 All contributions are welcome send your PR and Issues.
 
-Created by Javier Diaz
+#### Created by Javier Diaz
