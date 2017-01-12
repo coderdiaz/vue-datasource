@@ -89,7 +89,7 @@
         },
         props: {
             /**
-             * The table information to display
+             * Table information
              * @type {Array}
              */
             tableData: {
@@ -97,7 +97,7 @@
                 required: true
             },
             /**
-             * Defines the language with which the table will be displayed
+             * Defines the table labels language
              * @type {String}
              */
             language: {
@@ -105,7 +105,7 @@
                 default: 'es'
             },
             /**
-             * Columns to display in table
+             * Columns to display 
              * @type {Array}
              */
             columns: {
@@ -113,7 +113,7 @@
                 required: true
             },
             /**
-             * Information about data collection to paginate 
+             * Pagination information about the table data 
              * @type {Object}
              */
             pagination: {
@@ -128,7 +128,7 @@
                 }
             },
             /**
-             * Buttons to perform action on click event
+             * Action buttons
              * @type {Array}
              */
             actions: {
@@ -149,7 +149,7 @@
         },
         computed: {
             /**
-             * Get the translation to display in the table
+             * Defines the table labels language
              * @return {Object}
              */
             translation() {
@@ -168,7 +168,7 @@
         },
         watch: {
             /**
-             * Event when the record limit to be displayed is changed
+             * Handle show limit changed.
              * @return {void}
              */
             perpage() {
