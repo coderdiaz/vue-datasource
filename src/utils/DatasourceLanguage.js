@@ -1,5 +1,6 @@
 export default {
     translations: {
+        // English translation
         'en': {
             'table': {
                 'label_limits': 'Show',
@@ -16,6 +17,7 @@ export default {
                 'btn_last': 'Latest'
             }
         },
+        // Spanish translation
         'es': {
             'table': {
                 'label_limits': 'Mostrar',

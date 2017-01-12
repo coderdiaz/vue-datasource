@@ -25,13 +25,16 @@
                 <table class="table table-striped Vue__table">
                     <thead>
                         <tr>
+                            <!--columns-->
                             <th v-for="column in columns">{{ column.name }}</th>
+                            <!--/columns-->
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-if="pagination.total == 0">
                             <td :colspan="columns.length">{{ translation.table.records_not_found }}</td>
                         </tr>
+                        <!--rows-->
                         <tr v-else
                             :class="{ 'success': (index == indexSelected) }"
                             v-for="(row, index) in tableData"
@@ -40,16 +43,20 @@
                                 {{ fetchFromObject(row, k.key, k.render) }}
                             </td>
                         </tr>
+                        <!--/rows-->
                         <tr>
+                            <!--info-table-->
                             <td class="text-center" :colspan="columns.length">
                                 {{ tableInfo }}
                             </td>
+                            <!--/info-table-->
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="panel-footer Vue__panel-footer">
                 <div class="pull-left">
+                    <!--actions-buttons-->
                     <div class="btn-group Vue__datasource_actions">
                         <button class="btn btn-default" type="button"
                             :class="btn.class"
@@ -59,12 +66,12 @@
                             {{ btn.text }}
                         </button>
                     </div>
+                    <!--/actions-buttons-->
                 </div>
                 <div class="pull-right">
-                    <pagination
-                        :pages="pagination"
-                        @change="changePage"
-                        :translation="translation.pagination"></pagination>
+                    <!--pagination-->
+                    <pagination :pages="pagination" :translation="translation.pagination" @change="changePage"></pagination>
+                    <!--/pagination-->
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -81,18 +88,34 @@
             Pagination
         },
         props: {
+            /**
+             * The table information to display
+             * @type {Array}
+             */
             tableData: {
                 type: Array,
                 required: true
             },
+            /**
+             * Defines the language with which the table will be displayed
+             * @type {String}
+             */
             language: {
                 type: String,
                 default: 'es'
             },
+            /**
+             * Columns to display in table
+             * @type {Array}
+             */
             columns: {
                 type: Array,
                 required: true
             },
+            /**
+             * Information about data collection to paginate 
+             * @type {Object}
+             */
             pagination: {
                 type: Object,
                 default() {
@@ -104,6 +127,10 @@
                     }
                 }
             },
+            /**
+             * Buttons to perform action on click event
+             * @type {Array}
+             */
             actions: {
                 type: Array,
                 default() {
@@ -113,14 +140,18 @@
         },
         data() {
             return {
-                limits: [1, 5, 10, 15, 20],
-                perpage: 15,
-                selected: null,
-                indexSelected: -1,
-                search: ''
+                limits: [1, 5, 10, 15, 20], // values that the user can select to display records
+                perpage: 15, // default value to show records
+                selected: null, // row and Object selected on click event
+                indexSelected: -1, // index row selected on click event
+                search: '' // word to search in the table
             }
         },
         computed: {
+            /**
+             * Get the translation to display in the table
+             * @return {Object}
+             */
             translation() {
                 return Language.translations[this.language];
             },
@@ -136,6 +167,10 @@
             }
         },
         watch: {
+            /**
+             * Event when the record limit to be displayed is changed
+             * @return {void}
+             */
             perpage() {
                 this.selected = null;
                 this.$emit('change', { perpage: this.perpage, page: 1 });
@@ -145,19 +180,16 @@
 </script>
 <style lang="sass" scoped>
     .vue-datasource {
-
         .Vue__panel-body {
             padding: 0;
             .Vue__table {
                 margin-bottom: 0;
             }
         }
-
         .Vue__panel-footer {
             .Vue__datasource_actions {
                 margin: 10px 0;
             }
         }
-
     }
 </style>

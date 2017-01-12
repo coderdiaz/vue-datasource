@@ -1,8 +1,6 @@
 export default {
     /**
      * Find the element value using Recursive Method and return the value rendered if it's defined
-     *
-     * @author Javier Diaz <coderdiaz@gmail.com>
      * @param obj
      * @param column
      * @param render
@@ -22,9 +20,8 @@ export default {
 
     /**
      * Emit event to change page from pagination
-     *
-     * @author Javier Diaz <coderdiaz@gmail.com>
      * @param page
+     * @return {void}
      */
     changePage(page) {
         this.selected = null;
@@ -33,10 +30,9 @@ export default {
 
     /**
      * Effect toggle to selected row
-     *
-     * @author Javier Diaz <coderdiaz@gmail.com>
      * @param row
      * @param index
+     * @return {void}
      */
     selectRow(row, index) {
         if(this.indexSelected == index) {
@@ -53,9 +49,7 @@ export default {
 
     /**
      * Computed property: Building custom string information with translation
-     *
-     * @author Javier Diaz <coderdiaz@gmail.com>
-     * @returns {string}
+     * @returns {String}
      */
     tableInfo() {
         let label_show = this.translation.pagination.label_show;
