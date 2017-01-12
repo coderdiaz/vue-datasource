@@ -126,7 +126,7 @@ new Vue({
           icon: 'glyphicon glyphicon-pencil',
           class: 'btn-primary',
           event(e, row) {
-            console.warn('Are you clicked me?', e);
+            console.warn('Did clicked me?', e);
             if(row == null) {
               console.info('Ups.. data not found :(')
             } else {
@@ -168,10 +168,10 @@ new Vue({
   },
   methods: {
     changePage(values) {
-      alert(`Show limit is changed, the new limit is ${values.perpage} and the current page is ${values.page}`);
+      alert(`Show limit changed, the new limit is ${values.perpage} and the current page is ${values.page}`);
     },
     onSearch(searchQuery) {
-      alert(`Are you find this? ${searchQuery}`);
+      alert(`Did you find this? ${searchQuery}`);
     }
   }
 });
