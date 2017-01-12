@@ -3,6 +3,7 @@
 
 ### Demo
 
+!['Screenshot'](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/screenshot.png)
 Temporal: http://recordit.co/F9c92b277R
 
 Live demo coming soon ....
