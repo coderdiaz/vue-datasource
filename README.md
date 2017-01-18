@@ -1,11 +1,19 @@
 # Vue Datasource
 #### A Vue.js server side component to create tables. Compatible with Vue 2.x and Laravel
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE) 
+[![GitHub stars](https://img.shields.io/github/stars/coderdiaz/vue-datasource.svg?style=flat-square)](https://github.com/coderdiaz/vue-datasource/stargazers) 
+![](https://img.shields.io/npm/dm/vue-datasource.svg?style=flat-square)
+![](https://img.shields.io/npm/v/vue-datasource.svg?style=flat-square)
 
 ### Demo
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) 
+[![forthebadge](http://forthebadge.com/images/badges/built-by-developers.svg)](http://forthebadge.com)
 
 !['Screenshot'](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/screenshot.png)
 
 Live: https://young-falls-97690.herokuapp.com/
+
 
 ### Install/Usage
 ```
@@ -166,4 +174,3 @@ This callback will modify the data for various operations. Such as applying a sp
 All contributions are welcome send your PR and Issues.
 
 ##### Created by Javier Diaz. Translation enhancement by [itsuwaribito] (https://github.com/itsuwaribito)
-
