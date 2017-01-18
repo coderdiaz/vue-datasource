@@ -73,6 +73,12 @@ new Vue({
 | change      | Handle show limit changed. Gets object with new show limit and current page `{perpage: 10, page: 2}`|
 | searching   | Handles search input. Gets string as parameter                                                      |
 
+### Available Languages
+| Language    | Abbr  |
+|-------------|-------|
+| Spanish     | es    |
+| English     | en    |
+
 ### Columns
 Each column object needs a `name` and `key` attributes.
 ```javascript
@@ -172,5 +178,8 @@ This callback will modify the data for various operations. Such as applying a sp
 
 ### Contributions 
 All contributions are welcome send your PR and Issues.
+
+### License
+Vue Datasource is open-sourced software licensed under the [MIT license](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE)
 
 ##### Created by Javier Diaz. Translation enhancement by [itsuwaribito] (https://github.com/itsuwaribito)
