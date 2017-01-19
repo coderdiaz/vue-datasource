@@ -176,6 +176,10 @@
                 this.selected = null;
                 this.indexSelected = -1;
                 this.$emit('change', { perpage: this.perpage, page: 1 });
+            },
+            tableData() {
+                this.selected = null;
+                this.indexSelected = -1;
             }
         }
     }

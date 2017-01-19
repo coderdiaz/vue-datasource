@@ -430,6 +430,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.selected = null;
 	            this.indexSelected = -1;
 	            this.$emit('change', { perpage: this.perpage, page: 1 });
+	        },
+	        tableData: function tableData() {
+	            this.selected = null;
+	            this.indexSelected = -1;
 	        }
 	    }
 	};
@@ -578,6 +582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    changePage: function changePage(page) {
 	        this.selected = null;
+	        this.indexSelected = -1;
 	        this.$emit('change', { perpage: this.perpage, page: page });
 	    },
 	    selectRow: function selectRow(row, index) {
