@@ -163,6 +163,7 @@
             selectRow: Utils.selectRow,
             searching() {
                 this.selected = null;
+                this.indexSelected  = -1;
                 this.$emit('searching', this.search);
             }
         },
@@ -173,6 +174,7 @@
              */
             perpage() {
                 this.selected = null;
+                this.indexSelected = -1;
                 this.$emit('change', { perpage: this.perpage, page: 1 });
             }
         }

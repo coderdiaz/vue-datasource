@@ -410,12 +410,14 @@
 	        selectRow: _DatasourceUtils2.default.selectRow,
 	        searching: function searching() {
 	            this.selected = null;
+	            this.indexSelected = -1;
 	            this.$emit('searching', this.search);
 	        }
 	    },
 	    watch: {
 	        perpage: function perpage() {
 	            this.selected = null;
+	            this.indexSelected = -1;
 	            this.$emit('change', { perpage: this.perpage, page: 1 });
 	        }
 	    }

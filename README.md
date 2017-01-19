@@ -1,5 +1,5 @@
 # Vue Datasource
-#### A Vue.js server side component to create tables. Compatible with Vue 2.x and Laravel
+#### A Vue.js server side component to create dynamic tables. Compatible with Vue 2.x and Laravel.
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE) 
 [![GitHub stars](https://img.shields.io/github/stars/coderdiaz/vue-datasource.svg?style=flat-square)](https://github.com/coderdiaz/vue-datasource/stargazers) 
 ![](https://img.shields.io/npm/dm/vue-datasource.svg?style=flat-square)
