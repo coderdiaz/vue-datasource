@@ -3,7 +3,7 @@ import Datasource from './Datasource.vue';
 
 var data = {
   "pagination": {
-    "total": 4,
+    "total": 12,
     "per_page": 15,
     "current_page": 1,
     "last_page": 1,
@@ -55,6 +55,75 @@ var data = {
     },
     {
       "id_grupo": 5,
+      "tipo_grupo": "2",
+      "nombre_grupo": "Operators",
+      "estado_grupo": "1",
+      "created_at": "2016-12-06 14:18:54",
+      "updated_at": "2016-12-06 14:18:54",
+      "deleted_at": null,
+      "detalle_grupos_count": "1"
+    },
+    {
+      "id_grupo": 6,
+      "tipo_grupo": "2",
+      "nombre_grupo": "Operators",
+      "estado_grupo": "1",
+      "created_at": "2016-12-06 14:18:54",
+      "updated_at": "2016-12-06 14:18:54",
+      "deleted_at": null,
+      "detalle_grupos_count": "1"
+    },
+    {
+      "id_grupo": 7,
+      "tipo_grupo": "2",
+      "nombre_grupo": "Operators",
+      "estado_grupo": "1",
+      "created_at": "2016-12-06 14:18:54",
+      "updated_at": "2016-12-06 14:18:54",
+      "deleted_at": null,
+      "detalle_grupos_count": "1"
+    },
+    {
+      "id_grupo": 8,
+      "tipo_grupo": "2",
+      "nombre_grupo": "Operators",
+      "estado_grupo": "1",
+      "created_at": "2016-12-06 14:18:54",
+      "updated_at": "2016-12-06 14:18:54",
+      "deleted_at": null,
+      "detalle_grupos_count": "1"
+    },
+    {
+      "id_grupo": 9,
+      "tipo_grupo": "2",
+      "nombre_grupo": "Operators",
+      "estado_grupo": "1",
+      "created_at": "2016-12-06 14:18:54",
+      "updated_at": "2016-12-06 14:18:54",
+      "deleted_at": null,
+      "detalle_grupos_count": "1"
+    }, {
+      "id_grupo": 10,
+      "tipo_grupo": "2",
+      "nombre_grupo": "Operators",
+      "estado_grupo": "1",
+      "created_at": "2016-12-06 14:18:54",
+      "updated_at": "2016-12-06 14:18:54",
+      "deleted_at": null,
+      "detalle_grupos_count": "1"
+    },
+    {
+      "id_grupo": 11,
+      "tipo_grupo": "2",
+      "nombre_grupo": "Operators",
+      "estado_grupo": "1",
+      "created_at": "2016-12-06 14:18:54",
+      "updated_at": "2016-12-06 14:18:54",
+      "deleted_at": null,
+      "detalle_grupos_count": "1"
+    },
+    {
+      "id_grupo": 12,
       "tipo_grupo": "2",
       "nombre_grupo": "Operators",
       "estado_grupo": "1",
@@ -127,7 +196,7 @@ new Vue({
           class: 'btn-primary',
           event(e, row) {
             console.warn('Did clicked me?', e);
-            if(row == null) {
+            if (row == null) {
               console.info('Ups.. data not found :(')
             } else {
               console.info('Yeeei, I found this :)', JSON.stringify(row));
@@ -140,7 +209,7 @@ new Vue({
           class: 'btn-danger',
           event(e, row) {
             console.warn('Are you clicked me?', e);
-            if(row == null) {
+            if (row == null) {
               console.info('Ups.. data not found :(')
             } else {
               console.info('Yeeei, I found this :)', JSON.stringify(row));
@@ -153,7 +222,7 @@ new Vue({
           class: 'btn-info',
           event(e, row) {
             console.warn('Are you clicked me?', e);
-            if(row == null) {
+            if (row == null) {
               console.info('Ups.. data not found :(')
             } else {
               console.info('Yeeei, I found this :)', JSON.stringify(row));
