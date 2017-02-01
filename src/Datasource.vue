@@ -12,7 +12,7 @@
                     </div><!--/limits-->
                     <!--search-input-->
                     <div class="form-group pull-right">
-                        <input class="form-control" type="text"
+                        <input @keyup="searching" class="form-control" type="text"
                            v-model="search"
                            :placeholder="translation.table.placeholder_search">
                         <button type="button" class="btn btn-primary"

@@ -87,7 +87,18 @@
                 if(this.pages.current_page != this.pages.last_page) {
                     this.change(page);
                 }
+            },
+            changePageWithKeyBoard(key) {
+                if(key === 'ArrowLeft' && key !== 'ArrowRight') {
+                    this.previous();
+                }
+                if(key === 'ArrowRight'  && key !== 'ArrowLeft') {
+                    this.next();
+                }
             }
+        },
+        created() {
+            window.addEventListener('keyup', ({key}) => this.changePageWithKeyBoard(key));
         }
     }
 </script>
