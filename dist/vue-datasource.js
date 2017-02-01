@@ -343,7 +343,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	var _DatasourceUtils = __webpack_require__(6);
@@ -361,81 +361,81 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = {
-	    components: {
-	        Pagination: _Pagination2.default
+	  components: {
+	    Pagination: _Pagination2.default
+	  },
+	  props: {
+	    tableData: {
+	      type: Array,
+	      required: true
 	    },
-	    props: {
-	        tableData: {
-	            type: Array,
-	            required: true
-	        },
 	
-	        language: {
-	            type: String,
-	            default: 'es'
-	        },
-	
-	        columns: {
-	            type: Array,
-	            required: true
-	        },
-	
-	        pagination: {
-	            type: Object,
-	            default: function _default() {
-	                return {
-	                    total: 0,
-	                    to: 0,
-	                    from: 0,
-	                    per_page: 15
-	                };
-	            }
-	        },
-	
-	        actions: {
-	            type: Array,
-	            default: function _default() {
-	                return [];
-	            }
-	        }
+	    language: {
+	      type: String,
+	      default: 'es'
 	    },
-	    data: function data() {
+	
+	    columns: {
+	      type: Array,
+	      required: true
+	    },
+	
+	    pagination: {
+	      type: Object,
+	      default: function _default() {
 	        return {
-	            limits: [1, 5, 10, 15, 20],
-	            perpage: 15,
-	            selected: null,
-	            indexSelected: -1,
-	            search: '' };
+	          total: 0,
+	          to: 0,
+	          from: 0,
+	          per_page: 15
+	        };
+	      }
 	    },
 	
-	    computed: {
-	        translation: function translation() {
-	            return _DatasourceLanguage2.default.translations[this.language];
-	        },
-	
-	        tableInfo: _DatasourceUtils2.default.tableInfo
-	    },
-	    methods: {
-	        fetchFromObject: _DatasourceUtils2.default.fetchFromObject,
-	        changePage: _DatasourceUtils2.default.changePage,
-	        selectRow: _DatasourceUtils2.default.selectRow,
-	        searching: function searching() {
-	            this.selected = null;
-	            this.indexSelected = -1;
-	            this.$emit('searching', this.search);
-	        }
-	    },
-	    watch: {
-	        perpage: function perpage() {
-	            this.selected = null;
-	            this.indexSelected = -1;
-	            this.$emit('change', { perpage: this.perpage, page: 1 });
-	        },
-	        tableData: function tableData() {
-	            this.selected = null;
-	            this.indexSelected = -1;
-	        }
+	    actions: {
+	      type: Array,
+	      default: function _default() {
+	        return [];
+	      }
 	    }
+	  },
+	  data: function data() {
+	    return {
+	      limits: [1, 5, 10, 15, 20],
+	      perpage: 15,
+	      selected: null,
+	      indexSelected: -1,
+	      search: '' };
+	  },
+	
+	  computed: {
+	    translation: function translation() {
+	      return _DatasourceLanguage2.default.translations[this.language];
+	    },
+	
+	    tableInfo: _DatasourceUtils2.default.tableInfo
+	  },
+	  methods: {
+	    fetchFromObject: _DatasourceUtils2.default.fetchFromObject,
+	    changePage: _DatasourceUtils2.default.changePage,
+	    selectRow: _DatasourceUtils2.default.selectRow,
+	    searching: function searching() {
+	      this.selected = null;
+	      this.indexSelected = -1;
+	      this.$emit('searching', this.search);
+	    }
+	  },
+	  watch: {
+	    perpage: function perpage() {
+	      this.selected = null;
+	      this.indexSelected = -1;
+	      this.$emit('change', { perpage: this.perpage, page: 1 });
+	    },
+	    tableData: function tableData() {
+	      this.selected = null;
+	      this.indexSelected = -1;
+	    }
+	  }
 	};
 
 /***/ },
@@ -445,87 +445,87 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = {
-	    props: ['pages', 'translation'],
-	    computed: {
-	        items: function items() {
-	            var temp = [],
-	                bottomLimit = this.pages.current_page - 2,
-	                topLimit = this.pages.current_page + 2,
-	                showing = 5;
+	  props: ['pages', 'translation'],
+	  computed: {
+	    items: function items() {
+	      var temp = [],
+	          bottomLimit = this.pages.current_page - 2,
+	          topLimit = this.pages.current_page + 2,
+	          showing = 5;
 	
-	            if (bottomLimit <= 0) {
-	                bottomLimit = 1;
-	                topLimit = 5;
-	            }
+	      if (bottomLimit <= 0) {
+	        bottomLimit = 1;
+	        topLimit = 5;
+	      }
 	
-	            if (topLimit >= this.pages.last_page) {
-	                bottomLimit = this.pages.last_page - 4;
-	                topLimit = this.pages.last_page;
-	            }
+	      if (topLimit >= this.pages.last_page) {
+	        bottomLimit = this.pages.last_page - 4;
+	        topLimit = this.pages.last_page;
+	      }
 	
-	            if (this.pages.last_page < 5) {
-	                showing = this.pages.last_page;
-	            }
+	      if (this.pages.last_page < 5) {
+	        showing = this.pages.last_page;
+	      }
 	
-	            if (bottomLimit <= 0) {
-	                bottomLimit = 1;
-	            }
+	      if (bottomLimit <= 0) {
+	        bottomLimit = 1;
+	      }
 	
-	            if (this.pages.last_page == 0 || this.pages.last_page == 1) {
-	                showing = 1;
-	            }
+	      if (this.pages.last_page == 0 || this.pages.last_page == 1) {
+	        showing = 1;
+	      }
 	
-	            for (var i = 0; i < showing; i++) {
-	                temp[i] = i + bottomLimit;
-	            }
+	      for (var i = 0; i < showing; i++) {
+	        temp[i] = i + bottomLimit;
+	      }
 	
-	            return temp;
-	        }
-	    },
-	    methods: {
-	        firstPage: function firstPage() {
-	            if (this.pages.current_page != 1) {
-	                this.change(1);
-	            }
-	        },
-	        previous: function previous() {
-	            if (this.pages.current_page != 1) {
-	                this.change(--this.pages.current_page);
-	            }
-	        },
-	        change: function change(page) {
-	            this.$emit('change', page);
-	        },
-	        next: function next() {
-	            if (this.pages.current_page != this.pages.last_page) {
-	                this.change(++this.pages.current_page);
-	            }
-	        },
-	        lastPage: function lastPage(page) {
-	            if (this.pages.current_page != this.pages.last_page) {
-	                this.change(page);
-	            }
-	        },
-	        changePageWithKeyBoard: function changePageWithKeyBoard(key) {
-	            if (key === 'ArrowLeft' && key !== 'ArrowRight') {
-	                this.previous();
-	            }
-	            if (key === 'ArrowRight' && key !== 'ArrowLeft') {
-	                this.next();
-	            }
-	        }
-	    },
-	    created: function created() {
-	        var _this = this;
-	
-	        window.addEventListener('keyup', function (_ref) {
-	            var key = _ref.key;
-	            return _this.changePageWithKeyBoard(key);
-	        });
+	      return temp;
 	    }
+	  },
+	  methods: {
+	    firstPage: function firstPage() {
+	      if (this.pages.current_page != 1) {
+	        this.change(1);
+	      }
+	    },
+	    previous: function previous() {
+	      if (this.pages.current_page != 1) {
+	        this.change(--this.pages.current_page);
+	      }
+	    },
+	    change: function change(page) {
+	      this.$emit('change', page);
+	    },
+	    next: function next() {
+	      if (this.pages.current_page != this.pages.last_page) {
+	        this.change(++this.pages.current_page);
+	      }
+	    },
+	    lastPage: function lastPage(page) {
+	      if (this.pages.current_page != this.pages.last_page) {
+	        this.change(page);
+	      }
+	    },
+	    changePageWithKeyBoard: function changePageWithKeyBoard(key) {
+	      if (key === 'ArrowLeft' && key !== 'ArrowRight') {
+	        this.previous();
+	      }
+	      if (key === 'ArrowRight' && key !== 'ArrowLeft') {
+	        this.next();
+	      }
+	    }
+	  },
+	  created: function created() {
+	    var _this = this;
+	
+	    window.addEventListener('keyup', function (_ref) {
+	      var key = _ref.key;
+	      return _this.changePageWithKeyBoard(key);
+	    });
+	  }
 	};
 
 /***/ },
@@ -535,44 +535,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = {
-	    translations: {
-	        'en': {
-	            'table': {
-	                'label_limits': 'Show',
-	                'label_search': 'Search',
-	                'placeholder_search': 'Type to search..',
-	                'records_not_found': 'No records found'
-	            },
-	            'pagination': {
-	                'label_show': 'Showing',
-	                'label_to': 'to',
-	                'label_of': 'of',
-	                'label_entries': 'entries',
-	                'btn_first': 'First',
-	                'btn_last': 'Latest'
-	            }
-	        },
+	  translations: {
+	    'en': {
+	      'table': {
+	        'label_limits': 'Show',
+	        'label_search': 'Search',
+	        'placeholder_search': 'Type to search..',
+	        'records_not_found': 'No records found'
+	      },
+	      'pagination': {
+	        'label_show': 'Showing',
+	        'label_to': 'to',
+	        'label_of': 'of',
+	        'label_entries': 'entries',
+	        'btn_first': 'First',
+	        'btn_last': 'Latest'
+	      }
+	    },
 	
-	        'es': {
-	            'table': {
-	                'label_limits': 'Mostrar',
-	                'label_search': 'Buscar',
-	                'placeholder_search': 'Buscar ..',
-	                'records_not_found': 'No se encontraron registros.'
-	            },
-	            'pagination': {
-	                'label_show': 'Mostrando',
-	                'label_to': 'a',
-	                'label_of': 'de',
-	                'label_entries': 'registros',
-	                'btn_first': 'Primero',
-	                'btn_last': 'Último'
-	            }
-	        }
+	    'es': {
+	      'table': {
+	        'label_limits': 'Mostrar',
+	        'label_search': 'Buscar',
+	        'placeholder_search': 'Buscar ..',
+	        'records_not_found': 'No se encontraron registros.'
+	      },
+	      'pagination': {
+	        'label_show': 'Mostrando',
+	        'label_to': 'a',
+	        'label_of': 'de',
+	        'label_entries': 'registros',
+	        'btn_first': 'Primero',
+	        'btn_last': 'Último'
+	      }
 	    }
+	  }
 	};
 
 /***/ },
@@ -582,48 +582,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	exports.default = {
-	    fetchFromObject: function fetchFromObject(obj, column, render) {
-	        if (typeof obj === 'undefined') return false;
-	        var _index = column.indexOf('.');
-	        if (_index > -1) {
-	            return this.fetchFromObject(obj[column.substring(0, _index)], column.substr(_index + 1));
-	        }
-	        if (typeof render != 'undefined') {
-	            return render(obj[column]);
-	        }
-	        return obj[column];
-	    },
-	    changePage: function changePage(page) {
-	        this.selected = null;
-	        this.indexSelected = -1;
-	        this.$emit('change', { perpage: this.perpage, page: page });
-	    },
-	    selectRow: function selectRow(row, index) {
-	        if (this.indexSelected == index) {
-	            this.indexSelected = -1;
-	            this.selected = null;
-	        } else {
-	            this.indexSelected = index;
-	            this.selected = {
-	                'row': row,
-	                'index': index
-	            };
-	        }
-	    },
-	    tableInfo: function tableInfo() {
-	        var label_show = this.translation.pagination.label_show;
-	        var from = this.pagination.from == null ? 0 : this.pagination.from;
-	        var label_to = this.translation.pagination.label_to;
-	        var to = this.pagination.to == null ? 0 : this.pagination.to;
-	        var label_of = this.translation.pagination.label_of;
-	        var total = this.pagination.total;
-	        var label_entries = this.translation.pagination.label_entries;
-	
-	        return label_show + ' ' + from + ' ' + label_to + ' ' + to + ' ' + label_of + ' ' + total + ' ' + label_entries;
+	  fetchFromObject: function fetchFromObject(obj, column, render) {
+	    if (typeof obj === 'undefined') return false;
+	    var _index = column.indexOf('.');
+	    if (_index > -1) {
+	      return this.fetchFromObject(obj[column.substring(0, _index)], column.substr(_index + 1));
 	    }
+	    if (typeof render != 'undefined') {
+	      return render(obj[column]);
+	    }
+	    return obj[column];
+	  },
+	  changePage: function changePage(page) {
+	    this.selected = null;
+	    this.indexSelected = -1;
+	    this.$emit('change', { perpage: this.perpage, page: page });
+	  },
+	  selectRow: function selectRow(row, index) {
+	    if (this.indexSelected == index) {
+	      this.indexSelected = -1;
+	      this.selected = null;
+	    } else {
+	      this.indexSelected = index;
+	      this.selected = {
+	        'row': row,
+	        'index': index
+	      };
+	    }
+	  },
+	  tableInfo: function tableInfo() {
+	    var label_show = this.translation.pagination.label_show;
+	    var from = this.pagination.from == null ? 0 : this.pagination.from;
+	    var label_to = this.translation.pagination.label_to;
+	    var to = this.pagination.to == null ? 0 : this.pagination.to;
+	    var label_of = this.translation.pagination.label_of;
+	    var total = this.pagination.total;
+	    var label_entries = this.translation.pagination.label_entries;
+	
+	    return label_show + ' ' + from + ' ' + label_to + ' ' + to + ' ' + label_of + ' ' + total + ' ' + label_entries;
+	  }
 	};
 
 /***/ },
@@ -799,7 +799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _vm.searching($event)
 	      }
 	    }
-	  }, [_vm._v(_vm._s(_vm.translation.table.label_search))])]), _vm._v(" "), _c('div', {
+	  }, [_vm._v(_vm._s(_vm.translation.table.label_search) + "\n          ")])]), _vm._v(" "), _c('div', {
 	    staticClass: "clearfix"
 	  })])]), _vm._v(" "), _c('div', {
 	    staticClass: "panel-body Vue__panel-body"
@@ -823,14 +823,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 	    }, _vm._l((_vm.columns), function(k) {
-	      return _c('td', [_vm._v("\n                            " + _vm._s(_vm.fetchFromObject(row, k.key, k.render)) + "\n                        ")])
+	      return _c('td', [_vm._v("\n            " + _vm._s(_vm.fetchFromObject(row, k.key, k.render)) + "\n          ")])
 	    }))
 	  }), _vm._v(" "), _c('tr', [_c('td', {
 	    staticClass: "text-center",
 	    attrs: {
 	      "colspan": _vm.columns.length
 	    }
-	  }, [_vm._v("\n                            " + _vm._s(_vm.tableInfo) + "\n                        ")])])], 2)])]), _vm._v(" "), _c('div', {
+	  }, [_vm._v("\n            " + _vm._s(_vm.tableInfo) + "\n          ")])])], 2)])]), _vm._v(" "), _c('div', {
 	    staticClass: "panel-footer Vue__panel-footer"
 	  }, [_c('div', {
 	    staticClass: "pull-left"
@@ -851,7 +851,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, [(btn.icon) ? _c('i', {
 	      staticClass: "pr1",
 	      class: btn.icon
-	    }) : _vm._e(), _vm._v("\n                        " + _vm._s(btn.text) + "\n                    ")])
+	    }) : _vm._e(), _vm._v("\n            " + _vm._s(btn.text) + "\n          ")])
 	  }))]), _vm._v(" "), _c('div', {
 	    staticClass: "pull-right"
 	  }, [_c('pagination', {
