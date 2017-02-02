@@ -127,7 +127,7 @@ new Vue({
           class: 'btn-primary',
           event(e, row) {
             console.warn('Did clicked me?', e);
-            if(row == null) {
+            if (row == null) {
               console.info('Ups.. data not found :(')
             } else {
               console.info('Yeeei, I found this :)', JSON.stringify(row));
@@ -140,7 +140,7 @@ new Vue({
           class: 'btn-danger',
           event(e, row) {
             console.warn('Are you clicked me?', e);
-            if(row == null) {
+            if (row == null) {
               console.info('Ups.. data not found :(')
             } else {
               console.info('Yeeei, I found this :)', JSON.stringify(row));
@@ -153,7 +153,7 @@ new Vue({
           class: 'btn-info',
           event(e, row) {
             console.warn('Are you clicked me?', e);
-            if(row == null) {
+            if (row == null) {
               console.info('Ups.. data not found :(')
             } else {
               console.info('Yeeei, I found this :)', JSON.stringify(row));
