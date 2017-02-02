@@ -1,9 +1,22 @@
-# Vue Datasource
-#### A Vue.js server side component to create dynamic tables. Compatible with Vue 2.x and Laravel.
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE) 
-[![GitHub stars](https://img.shields.io/github/stars/coderdiaz/vue-datasource.svg?style=flat-square)](https://github.com/coderdiaz/vue-datasource/stargazers) 
-![](https://img.shields.io/npm/dm/vue-datasource.svg?style=flat-square)
-![](https://img.shields.io/npm/v/vue-datasource.svg?style=flat-square)
+<p align="center">
+    <a href="https://github.com/coderdiaz/vue-datasource">
+        <img src="logotype.png" width="120">
+    </a>
+    <h2 align="center">Vue Datasource</h2>
+</p>
+
+<p align="center">
+    A Vue.js server side component to create dynamic tables. Compatible with Vue 2.x and Laravel.
+</p>
+
+<p align="center">
+    <a href="https://github.com/coderdiaz/vue-datasource/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square"></a>
+    <a href="https://github.com/coderdiaz/vue-datasource/stargazers"><img src="https://img.shields.io/github/stars/coderdiaz/vue-datasource.svg?style=flat-square"></a>
+    <a href="http://npmjs.com/package/vue-datasource"><img src="https://img.shields.io/npm/dm/vue-datasource.svg?style=flat-square"></a>
+    <a href="http://npmjs.com/package/vue-datasource"><img src="https://img.shields.io/npm/v/vue-datasource.svg?style=flat-square"></a>
+</p>
+
+---
 
 ### Demo
 
@@ -21,16 +34,16 @@ $ npm install vue-datasource
 ```
 
 ```html
-    <div id="#app">
-        <datasource
-            language="en"
-            :table-data="information.data"
-            :columns="columns"
-            :pagination="information.pagination"
-            :actions="actions"
-            v-on:change="changePage"
-            v-on:searching="onSearch"></datasource>
-    </div>
+<div id="#app">
+    <datasource
+        language="en"
+        :table-data="information.data"
+        :columns="columns"
+        :pagination="information.pagination"
+        :actions="actions"
+        v-on:change="changePage"
+        v-on:searching="onSearch"></datasource>
+</div>
 ```
 
 ```javascript
