@@ -20,7 +20,7 @@
 
 ### Demo
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) 
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 [![forthebadge](http://forthebadge.com/images/badges/built-by-developers.svg)](http://forthebadge.com)
 
 !['Screenshot'](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/screenshot.png)
@@ -91,11 +91,12 @@ new Vue({
 |-------------|-------|
 | Spanish     | es    |
 | English     | en    |
+| French      | fr    |
 
 ### Columns
 Each column object needs a `name` and `key` attributes.
 ```javascript
-{ 
+{
     ...,
     columns: [
         {
@@ -124,7 +125,7 @@ For Laravel users, you can access relationships through the `key` attribute. Let
 
 To get the user's role we would need to define in our columns array:
 ```javascript
-{ 
+{
     ...,
     columns: [
         {
@@ -139,7 +140,7 @@ To get the user's role we would need to define in our columns array:
 ### Render column
 This callback will modify the data for various operations. Such as applying a specific format or an arithmetic operation to the column value and return it.
 ```javascript
-{ 
+{
     ...,
     columns: [
         {
@@ -166,7 +167,7 @@ This callback will modify the data for various operations. Such as applying a sp
         to: 15 // End of visible rows
     }
 }
-``` 
+```
 
 ### Action Event Sctructure
 ```javascript
@@ -189,7 +190,7 @@ This callback will modify the data for various operations. Such as applying a sp
 - Using Laravel 5.3 and pagination: [laravel-datasource-example](https://github.com/coderdiaz/laravel-datasource-example).
 
 
-### Contributions 
+### Contributions
 All contributions are welcome send your PR and Issues.
 
 ### License
