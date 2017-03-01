@@ -33,6 +33,23 @@ export default {
         'btn_first': 'Primero',
         'btn_last': 'Último'
       }
-    }
+    },
+    // French translation
+    'fr': {
+      'table': {
+        'label_limits': 'Afficher',
+        'label_search': 'Recherche',
+        'placeholder_search': 'Recherche par mot-clé..',
+        'records_not_found': 'Aucun enregistrements trouvés'
+      },
+      'pagination': {
+        'label_show': 'Affichage de',
+        'label_to': 'à',
+        'label_of': 'de',
+        'label_entries': 'entrées',
+        'btn_first': 'Première',
+        'btn_last': 'Dernière'
+      }
+    },
   }
 }
