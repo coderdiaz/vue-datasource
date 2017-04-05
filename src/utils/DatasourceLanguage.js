@@ -51,5 +51,22 @@ export default {
         'btn_last': 'Dernière'
       }
     },
+    // Chinese Simplified translation
+    'zh-CN': {
+      'table': {
+        'label_limits': '显示',
+        'label_search': '搜索',
+        'placeholder_search': '输入搜索..',
+        'records_not_found': '记录未找到'
+      },
+      'pagination': {
+        'label_show': '正在显示',
+        'label_to': '到',
+        'label_of': '总共',
+        'label_entries': '条目',
+        'btn_first': '首页',
+        'btn_last': '未页'
+      }
+    },
   }
 }
