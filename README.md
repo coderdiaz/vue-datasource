@@ -93,6 +93,7 @@ new Vue({
 | English     | en    |
 | French      | fr    |
 | Chinese (Simplified)     | zh-CN |
+| Catalan     | ca |
 
 ### Columns
 Each column object needs a `name` and `key` attributes.
