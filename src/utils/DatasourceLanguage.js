@@ -68,5 +68,22 @@ export default {
         'btn_last': '未页'
       }
     },
+    // Catalan translation
+    'ca': {
+      'table': {
+        'label_limits': 'Mostrar',
+        'label_search': 'Buscar',
+        'placeholder_search': 'Buscar ..',
+        'records_not_found': 'No s\'han trobat registres.'
+      },
+      'pagination': {
+        'label_show': 'Mostrant',
+        'label_to': 'a',
+        'label_of': 'de',
+        'label_entries': 'registres',
+        'btn_first': 'Primer',
+        'btn_last': 'Últim'
+      }
+    },  
   }
 }
