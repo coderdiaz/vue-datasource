@@ -26,7 +26,7 @@ Live: https://young-falls-97690.herokuapp.com/
 
 ### Install/Usage
 ```
-$ npm install vue-datasource
+$ npm install git+https://git@github.com/coderdiaz/vue-datasource#2.0.0
 ```
 
 ```html
