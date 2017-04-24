@@ -19,10 +19,6 @@
 ---
 
 ### Demo
-
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
-[![forthebadge](http://forthebadge.com/images/badges/built-by-developers.svg)](http://forthebadge.com)
-
 !['Screenshot'](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/screenshot.png)
 
 Live: https://young-falls-97690.herokuapp.com/
@@ -72,28 +68,20 @@ new Vue({
 ```
 
 ### Available Props
-| Prop        | Type    | Default | Description                                                 |
-|-------------|---------|---------|-------------------------------------------------------------|
-| table-data  | Array   |         | Table information                                           |
-| language    | String  | es      | Defines the table labels language                           |
-| columns     | Array   |         | Columns to display                                          |
-| pagination  | Object  |         | Pagination information about the table data ([structure] (#pagination-structure))   |
-| actions     | Array   |         | Action buttons ([structure] (#action-event-sctructure))                   |
+| Prop        | Type    | Default        | Description                                                 |
+|-------------|---------|----------------|-------------------------------------------------------------|
+| table-data  | Array   |                | Table information                                           |
+| translation | Object  | [Object]       | Defines the table labels language ([structure](#translation-structure))            |
+| limits      | Array   | [1,5,10,15,20] | Defines the limits to display                               |
+| columns     | Array   |                | Columns to display                                          |
+| pagination  | Object  |                | Pagination information about the table data ([structure](#pagination-structure))   |
+| actions     | Array   |                | Action buttons ([structure](#action-event-sctructure))      |
 
 ### Available Events
 | Event       | Description                                                                                         |
 |-------------|-----------------------------------------------------------------------------------------------------|
 | change      | Handle show limit changed. Gets object with new show limit and current page `{perpage: 10, page: 2}`|
 | searching   | Handles search input. Gets string as parameter                                                      |
-
-### Available Languages
-| Language    | Abbr  |
-|-------------|-------|
-| Spanish     | es    |
-| English     | en    |
-| French      | fr    |
-| Chinese (Simplified)     | zh-CN |
-| Catalan     | ca |
 
 ### Columns
 Each column object needs a `name` and `key` attributes.
@@ -171,6 +159,22 @@ This callback will modify the data for various operations. Such as applying a sp
 }
 ```
 
+### Translation Structure
+```javascript
+{
+    limit: 'Limit',
+    search: 'Search',
+    placeholder_search: 'Type to search..',
+    records_not_found: 'No records found',
+    pagination: {
+        show: 'Showing',
+        to: 'to',
+        of: 'of',
+        entries: 'entries'
+    }
+}
+```
+
 ### Action Event Sctructure
 ```javascript
 {
@@ -187,15 +191,42 @@ This callback will modify the data for various operations. Such as applying a sp
     ]
 }
 ```
+### Development
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ### Implementation examples
 - Using Laravel 5.3 and pagination: [laravel-datasource-example](https://github.com/coderdiaz/laravel-datasource-example).
-
 
 ### Contributions
 All contributions are welcome send your PR and Issues.
 
 ### License
-Vue Datasource is open-sourced software licensed under the [MIT license](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE)
+This is a open-source software licensed under the [MIT license](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE)
 
-##### Created by Javier Diaz. Translation enhancement by [itsuwaribito] (https://github.com/itsuwaribito)
+##### Created by Javier Diaz. Translation by [itsuwaribito](https://github.com/itsuwaribito)

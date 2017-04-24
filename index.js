@@ -1,0 +1,1 @@
+modules.exports = require('./src/components/Datasource.vue');
