@@ -1,5 +1,6 @@
 <script>
 import DatasourceUtils from '../utils/DatasourceUtils'
+import { EventBus } from '../utils/EventBus'
 export default {
   name: 'Datasource-Pagination',
   render (h) {
@@ -54,7 +55,7 @@ export default {
     },
     change (e, page) {
       e.preventDefault()
-      this.$emit('change', page)
+      EventBus.$emit('pagination-change', page)
     },
     next (e) {
       e.preventDefault()

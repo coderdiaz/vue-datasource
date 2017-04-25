@@ -1,6 +1,7 @@
 <script>
 import DatasourceUtils from '../utils/DatasourceUtils'
 import Pagination from './Pagination.vue'
+import { EventBus } from '../utils/EventBus'
 export default {
   name: 'Datasource',
   components: {
@@ -45,7 +46,7 @@ export default {
               { this.actionsObject }
             </div>
             <div class="pull-right">
-              <pagination pages={ this.pagination } on-change={ (e) => this.changePage }></pagination>
+              <pagination pages={ this.pagination }></pagination>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -126,6 +127,9 @@ export default {
         return []
       }
     }
+  },
+  created () {
+    EventBus.$on('pagination-change', this.changePage)
   },
   data () {
     return {
