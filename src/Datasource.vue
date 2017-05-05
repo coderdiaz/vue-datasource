@@ -40,9 +40,7 @@
               :class="{ 'success': (index == indexSelected) }"
               v-for="(row, index) in tableData"
               @click.prevent="selectRow(row, index)">
-            <td v-for="k in columns">
-              {{ fetchFromObject(row, k.key, k.render) }}
-            </td>
+            <td v-for="k in columns" v-html="fetchFromObject(row, k.key, k.render)"></td>
           </tr>
           <!--/rows-->
           <tr>
