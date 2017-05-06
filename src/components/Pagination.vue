@@ -34,7 +34,7 @@ export default {
     items: DatasourceUtils.gettingItems,
     paginationItems () {
       return this.items.map((item, index) => {
-        return <li>
+        return <li class={{ active: (this.pages.current_page === item) }}>
           <a href="#" on-click={ (e) => this.change(e, item) }>{ item }</a>
         </li>
       })
