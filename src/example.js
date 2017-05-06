@@ -101,7 +101,7 @@ new Vue({
                 return 'Global';
                 break;
               case '2':
-                return 'General';
+                return '<b>General</b>';
                 break;
               case '3':
                 return 'Personal';
