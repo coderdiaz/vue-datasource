@@ -133,7 +133,7 @@ export default {
   },
   data () {
     return {
-      perpage: 15, // default value to show records
+      perpage: 3,
       selected: null, // row and Object selected on click event
       indexSelected: -1, // index row selected on click event
       search: '' // word to search in the table
@@ -158,7 +158,7 @@ export default {
       } else {
         return this.tableData.map((row, index) => {
           let columns = this.columns.map((column, index) => {
-            return <td>{ this.fetchFromObject(row, column.key, column.render) }</td>
+            return <td domPropsInnerHTML={ this.fetchFromObject(row, column.key, column.render) }></td>
           })
           return <tr class={{ success: index === this.indexSelected }} on-click={ (e) => this.selectRow(e, row, index) }>{ columns }</tr>
         })
