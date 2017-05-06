@@ -9,11 +9,11 @@ export default {
   render (h) {
     return (
       <div id="app">
-        <datasource table-data={this.information} actions={this.actions} columns={this.columns} pagination={this.pagination}></datasource>
+        <datasource table-data={this.information} limits={this.limits} actions={this.actions} columns={this.columns} pagination={this.pagination} onChange={this.change}></datasource>
       </div>
     )
   },
-  created () {
+  mounted () {
     this.getData()
   },
   data () {
@@ -29,16 +29,15 @@ export default {
           key: 'name'
         },
         {
-          name: 'Username',
-          key: 'username'
+          name: 'Year',
+          key: 'year',
+          render: function (value) {
+            return `<strong>${value}</strong>`
+          }
         },
         {
-          name: 'Email',
-          key: 'email'
-        },
-        {
-          name: 'Address',
-          key: 'address.street'
+          name: 'Code color',
+          key: 'pantone_value'
         }
       ],
       actions: [
@@ -81,30 +80,45 @@ export default {
             }
           }
         }
-      ]
+      ],
+      limits: [3, 5, 10, 15, 20],
+      current_page: 1,
+      per_page: 3,
+      total: 0
     }
   },
   computed: {
     pagination () {
       return {
-        total: 100,
-        per_page: 15,
-        current_page: 1,
+        total: this.total,
+        per_page: 3,
+        current_page: this.current_page,
         last_page: 5,
-        from: 1,
-        to: 15
+        from: (this.current_page === 1) ? 1 : this.per_page,
+        to: (this.current_page === 1) ? this.per_page : this.per_page * this.current_page
       }
     }
   },
   methods: {
     getData () {
-      axios.get('https://jsonplaceholder.typicode.com/users')
+      axios.get(`https://reqres.in/api/products?per_page=${this.pagination.per_page}&page=${this.pagination.current_page}`)
       .then((response) => {
-        this.information = response.data
+        this.pagination.per_page = parseInt(response.data.per_page)
+        this.per_page = parseInt(response.data.per_page)
+        this.total = parseInt(response.data.total)
+        this.pagination.current_page = parseInt(response.data.page)
+        this.current_page = parseInt(response.data.page)
+        this.pagination.last_page = parseInt(response.data.total_pages)
+        this.information = response.data.data
       })
       .catch((error) => {
         console.error(error)
       })
+    },
+    change (value) {
+      this.pagination.per_page = parseInt(value.perpage)
+      this.pagination.current_page = parseInt(value.page)
+      this.getData()
     }
   }
 }
