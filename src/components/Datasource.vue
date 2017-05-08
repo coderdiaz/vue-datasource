@@ -166,10 +166,16 @@ export default {
     },
     actionsObject () {
       return this.actions.map((action, index) => {
-        return <button class={this.dynamicClass('btn', action.class)} type="button" on-click={ (e) => action.event(e, this.selected) }>
-          <i class={ this.dynamicClass('pr1', action.icon) }></i>
-          { action.text }
-        </button>
+        try {
+          if (action.show(this.selected)) {
+            return <button class={this.dynamicClass('btn', action.class)} type="button" on-click={ (e) => action.event(e, this.selected) }>
+              <i class={ this.dynamicClass('pr1', action.icon) }></i>
+              { action.text }
+            </button>
+          }
+        } catch (ex) {
+          console.warn(`[VueDatasource] The callback show is not defined in action ${action.text}.`)
+        }
       })
     },
     tableInfo: DatasourceUtils.tableInfo
