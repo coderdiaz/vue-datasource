@@ -1,10 +1,11 @@
 
 # 2.0.0
-### Features
+### New Features
 - Now the limits are dynamics and a propertie.
 - The translations are dynamic and it is no longer necessary to add translations.
 - The entire project has been migrated to JSX.
 - Added ESLint standard.
+- Added support to define conditions in actions with the current selected row.
 
 ### Bugfixes
 - And more minor fixes. LOL =).
