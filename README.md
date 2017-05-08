@@ -184,6 +184,9 @@ This callback will modify the data for various operations. Such as applying a sp
             text: 'Click me', // Button label
             icon: 'glyphicon glyphicon-check', // Button icon
             class: 'btn-primary', // Button class (background color)
+            show(selectedRow) { // Event to define a condition to display the button with the selected row
+                return true
+            },
             event(e, row) { // Event handler callback. Gets event instace and selected row
                 console.log('Click row: ', row); // If no row is selected, row will be NULL
             }
@@ -192,8 +195,6 @@ This callback will modify the data for various operations. Such as applying a sp
 }
 ```
 ### Development
-
-## Build Setup
 
 ``` bash
 # install dependencies
