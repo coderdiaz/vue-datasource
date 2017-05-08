@@ -45,6 +45,13 @@ export default {
           text: 'Edit',
           icon: 'glyphicon glyphicon-pencil',
           class: 'btn-primary',
+          show (selectedRow) {
+            if (selectedRow) {
+              return (selectedRow.row.id === 1)
+            } else {
+              return true
+            }
+          },
           event (e, row) {
             console.warn('Are you clicked me?', e)
             if (row === null) {
@@ -58,6 +65,9 @@ export default {
           text: 'Delete',
           icon: 'glyphicon glyphicon-trash',
           class: 'btn-danger',
+          show (selectedRow) {
+            return true
+          },
           event (e, row) {
             console.warn('Are you clicked me?', e)
             if (row === null) {
@@ -71,6 +81,9 @@ export default {
           text: 'Show',
           icon: 'glyphicon glyphicon-eye-open',
           class: 'btn-info',
+          show (selectedRow) {
+            return true
+          },
           event (e, row) {
             console.warn('Are you clicked me?', e)
             if (row === null) {
