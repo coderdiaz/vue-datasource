@@ -9,7 +9,7 @@ export default {
   render (h) {
     return (
       <div id="app">
-        <datasource table-data={this.information} limits={this.limits} actions={this.actions} columns={this.columns} pagination={this.pagination} onChange={this.change}></datasource>
+        <datasource table-data={this.information} limits={this.limits} actions={this.actions} columns={this.columns} pagination={this.pagination} onChange={this.change} onSearching={this.searching}></datasource>
       </div>
     )
   },
@@ -29,15 +29,15 @@ export default {
           key: 'name'
         },
         {
-          name: 'Year',
-          key: 'year',
+          name: 'City',
+          key: 'city',
           render: function (value) {
             return `<strong>${value}</strong>`
           }
         },
         {
-          name: 'Code color',
-          key: 'pantone_value'
+          name: 'Company',
+          key: 'company'
         }
       ],
       actions: [
@@ -95,33 +95,17 @@ export default {
         }
       ],
       limits: [3, 5, 10, 15, 20],
-      current_page: 1,
-      per_page: 3,
-      total: 0
-    }
-  },
-  computed: {
-    pagination () {
-      return {
-        total: this.total,
-        per_page: 3,
-        current_page: this.current_page,
-        last_page: 5,
-        from: (this.current_page === 1) ? 1 : this.per_page,
-        to: (this.current_page === 1) ? this.per_page : this.per_page * this.current_page
-      }
+      page: 1,
+      perpage: 10,
+      pagination: {},
+      search: ''
     }
   },
   methods: {
-    getData () {
-      axios.get(`https://reqres.in/api/products?per_page=${this.pagination.per_page}&page=${this.pagination.current_page}`)
+    async getData () {
+      await axios.get(`http://young-falls-97690.herokuapp.com/getusers?per_page=${this.perpage}&page=${this.page}&search=${this.search}`)
       .then((response) => {
-        this.pagination.per_page = parseInt(response.data.per_page)
-        this.per_page = parseInt(response.data.per_page)
-        this.total = parseInt(response.data.total)
-        this.pagination.current_page = parseInt(response.data.page)
-        this.current_page = parseInt(response.data.page)
-        this.pagination.last_page = parseInt(response.data.total_pages)
+        this.pagination = response.data.pagination
         this.information = response.data.data
       })
       .catch((error) => {
@@ -129,8 +113,12 @@ export default {
       })
     },
     change (value) {
-      this.pagination.per_page = parseInt(value.perpage)
-      this.pagination.current_page = parseInt(value.page)
+      this.page = value.page
+      this.perpage = value.perpage
+      this.getData()
+    },
+    searching (value) {
+      this.search = value
       this.getData()
     }
   }
