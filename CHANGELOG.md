@@ -6,6 +6,8 @@
 - The entire project has been migrated to JSX.
 - Added ESLint standard.
 - Added support to define conditions in actions with the current selected row.
+- Added spinner.
+- Changed props and data.
 
 ### Bugfixes
 - And more minor fixes. LOL =).
