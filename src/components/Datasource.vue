@@ -133,7 +133,7 @@ export default {
   },
   data () {
     return {
-      perpage: 3,
+      perpage: 10,
       selected: null, // row and Object selected on click event
       indexSelected: -1, // index row selected on click event
       search: '' // word to search in the table
