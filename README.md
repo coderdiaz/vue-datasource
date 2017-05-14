@@ -167,8 +167,10 @@ This callback will modify the data for various operations. Such as applying a sp
 }
 ```
 
-### Buy me a coffee
-[Give me thanks](http://paypal.me/coderdiaz)
+## Buy me a coffee
+<a href="https://paypal.me/coderdiaz">
+    <img src="src/assets/donate.jpg" width="220">
+</a>
 
 ### Development
 
