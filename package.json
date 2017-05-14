@@ -12,10 +12,10 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "lib": "vue build src/components/Datasource.vue --prod --lib vue-datasource"
+    "lib": "vue build src/index.js --prod --lib vue-datasource"
   },
   "license": "MIT",
-  "main": "dist/src/components/Datasource.js",
+  "main": "dist/src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coderdiaz/vue-datasource.git"
