@@ -1,3 +1,3 @@
-import Datasource from 'src/components/Datasource.vue'
+import ServerDatasource from 'src/components/ServerDatasource.vue'
 
-export { Datasource }
+export { ServerDatasource }

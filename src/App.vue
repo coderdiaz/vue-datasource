@@ -1,6 +1,5 @@
 <script>
-import Datasource from './components/Datasource.vue'
-import axios from 'axios'
+import Datasource from './components/ServerDatasource.vue'
 export default {
   name: 'app',
   components: {
@@ -9,12 +8,9 @@ export default {
   render (h) {
     return (
       <div id="app">
-        <datasource table-data={this.information} limits={this.limits} actions={this.actions} columns={this.columns} pagination={this.pagination} onChange={this.change} onSearching={this.searching}></datasource>
+        <datasource source="http://young-falls-97690.herokuapp.com/getusers" limits={this.limits} actions={this.actions} columns={this.columns}></datasource>
       </div>
     )
-  },
-  mounted () {
-    this.getData()
   },
   data () {
     return {
@@ -102,16 +98,6 @@ export default {
     }
   },
   methods: {
-    async getData () {
-      await axios.get(`http://young-falls-97690.herokuapp.com/getusers?per_page=${this.perpage}&page=${this.page}&search=${this.search}`)
-      .then((response) => {
-        this.pagination = response.data.pagination
-        this.information = response.data.data
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-    },
     change (value) {
       this.page = value.page
       this.perpage = value.perpage
