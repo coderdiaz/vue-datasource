@@ -31,38 +31,26 @@ $ npm install git+https://git@github.com/coderdiaz/vue-datasource#2.0.0
 
 ```html
 <div id="#app">
-    <datasource
-        language="en"
-        :table-data="information.data"
+    <server-datasource
+        source="api_url"
         :columns="columns"
-        :pagination="information.pagination"
-        :actions="actions"
-        v-on:change="changePage"
-        v-on:searching="onSearch"></datasource>
+        :actions="actions"></server-datasource>
 </div>
 ```
 
 ```javascript
-import Datasource from 'vue-datasource'
+import { ServerDatasource } from 'vue-datasource'
 
 new Vue({
     el: '#app',
     components: {
-        Datasource
+        ServerDatasource
     },
     data() {
         return {
-            information: {
-                pagination: {...},
-                data: [...]
-            },
             columns: [...],
             actions: [...]
         }
-    },
-    methods: {
-        changePage(values) {...},
-        onSearch(searchQuery) {...}
     }
 });
 ```
@@ -70,11 +58,10 @@ new Vue({
 ### Available Props
 | Prop        | Type    | Default        | Description                                                 |
 |-------------|---------|----------------|-------------------------------------------------------------|
-| table-data  | Array   |                | Table information                                           |
+| source      | String  |                | API Url to get data                                         |
 | translation | Object  | [Object]       | Defines the table labels language ([structure](#translation-structure))            |
 | limits      | Array   | [1,5,10,15,20] | Defines the limits to display                               |
 | columns     | Array   |                | Columns to display                                          |
-| pagination  | Object  |                | Pagination information about the table data ([structure](#pagination-structure))   |
 | actions     | Array   |                | Action buttons ([structure](#action-event-sctructure))      |
 
 ### Available Events
@@ -144,21 +131,6 @@ This callback will modify the data for various operations. Such as applying a sp
 }
 ```
 
-### Pagination Structure
-```javascript
-{
-    ...,
-    pagination: {
-        total: 25, // Number of total rows (default 0)
-        per_page: 15, // Number of rows to show (default 15)
-        current_page: 1, // Actual page
-        last_page: 2, // Last page
-        from: 1, // Beginning of visible rows
-        to: 15 // End of visible rows
-    }
-}
-```
-
 ### Translation Structure
 ```javascript
 {
@@ -194,6 +166,10 @@ This callback will modify the data for various operations. Such as applying a sp
     ]
 }
 ```
+
+### Buy me a coffee
+[Give me thanks](http://paypal.me/coderdiaz)
+
 ### Development
 
 ``` bash
@@ -226,6 +202,9 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 
 ### Contributions
 All contributions are welcome send your PR and Issues.
+
+### Greatings
+[Vue Spinner by Greyby](https://github.com/greyby/vue-spinner)
 
 ### License
 This is a open-source software licensed under the [MIT license](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE)
