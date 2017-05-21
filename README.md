@@ -55,7 +55,7 @@ new Vue({
 });
 ```
 
-ClienSide component is comming soon..
+Client Side component is comming soon..
 
 ### Available Props
 | Prop        | Type    | Default        | Description                                                 |
