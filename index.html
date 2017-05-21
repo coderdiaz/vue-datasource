@@ -1,24 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <title>vue-datasource</title>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>VueDatasource 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   </head>
   <body>
-    <div id="app">
-      <div class="container">
-        <h3>Vue Datasource</h3>
-        <datasource 
-          :table-data="groups.data"
-          :columns="columns"
-          language="en"
-          :pagination="groups.pagination"
-          :actions="actions"
-          v-on:change="changePage"
-          v-on:searching="onSearch"></datasource>
+    <div class="container">
+      <div class="col-md-12">
+          <div id="app"></div>
       </div>
     </div>
-    <script src="./dist/example.js"></script>
+    <!-- built files will be auto injected -->
   </body>
 </html>

@@ -1,116 +1,86 @@
-<template>
-  <div class="Vue__pagination">
-    <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li :class="(pages.current_page == 1) ? 'disabled' : ''">
-          <a href="#" @click.prevent="firstPage">{{ translation.btn_first }}</a>
+<script>
+import DatasourceUtils from '../utils/DatasourceUtils'
+import { EventBus } from '../utils/EventBus'
+export default {
+  name: 'Datasource-Pagination',
+  render (h) {
+    return (
+      <div class="vue-pagination">
+        <nav>
+          <ul class="pagination">
+            <li class={{ disabled: this.pages.current_page === 1 }}>
+              <a href="#" on-click={ (e) => this.firstPage(e) }><span aria-hidden="true">&laquo;&laquo;</span></a>
+            </li>
+            <li class={{ disabled: this.pages.current_page === 1 }}>
+              <a href="#" on-click={ (e) => this.previous(e) }><span aria-hidden="true">&laquo;</span></a>
+            </li>
+            { this.paginationItems }
+            <li class={{ disabled: this.pages.current_page === this.pages.last_page }}>
+              <a href="#" on-click={ (e) => this.next(e) }><span aria-hidden="true">&raquo;</span></a>
+            </li>
+            <li class={{ disabled: this.pages.current_page === this.pages.last_page }}>
+              <a href="#" on-click={ (e) => this.lastPage(e, this.pages.last_page) }><span aria-hidden="true">&raquo;&raquo;</span></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    )
+  },
+  props: ['pages'],
+  created () {
+    window.addEventListener('keyup', ({key}) => this.changePageWithKeyBoard(key))
+  },
+  computed: {
+    items: DatasourceUtils.gettingItems,
+    paginationItems () {
+      return this.items.map((item, index) => {
+        return <li class={{ active: (this.pages.current_page === item) }}>
+          <a href="#" on-click={ (e) => this.change(e, item) }>{ item }</a>
         </li>
-        <li :class="(pages.current_page == 1) ? 'disabled' : ''">
-          <a href="#" @click.prevent="previous" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li v-for="n in items" :class="(pages.current_page == n) ? 'active': ''">
-          <a href="#" @click.prevent="change(n)">{{ n }}</a>
-        </li>
-        <li :class="(pages.current_page == pages.last_page) ? 'disabled' : ''">
-          <a href="#" @click.prevent="next" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-        <li :class="(pages.current_page == pages.last_page) ? 'disabled' : ''">
-          <a href="#" @click.prevent="lastPage(pages.last_page)">{{ translation.btn_last }}</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</template>
-<script type="text/babel">
-  export default {
-    props: ['pages', 'translation'],
-    computed: {
-      items() {
-        let temp = [],
-          bottomLimit = this.pages.current_page - 2,
-          topLimit = this.pages.current_page + 2,
-          showing = 5;
-
-        if (bottomLimit <= 0) {
-          bottomLimit = 1;
-          topLimit = 5;
-        }
-
-        if (topLimit >= this.pages.last_page) {
-          bottomLimit = this.pages.last_page - 4;
-          topLimit = this.pages.last_page;
-        }
-
-        if (this.pages.last_page < 5) {
-          showing = this.pages.last_page;
-        }
-
-        if (bottomLimit <= 0) {
-          bottomLimit = 1;
-        }
-
-        if (this.pages.last_page == 0 || this.pages.last_page == 1) {
-          showing = 1;
-        }
-
-        for (let i = 0; i < showing; i++) {
-          temp[i] = i + bottomLimit;
-        }
-
-        return temp;
+      })
+    }
+  },
+  methods: {
+    firstPage (e) {
+      e.preventDefault()
+      if (this.pages.current_page !== 1) {
+        this.change(e, 1)
       }
     },
-    methods: {
-      firstPage() {
-        if (this.pages.current_page != 1) {
-          this.change(1);
-        }
-      },
-      previous() {
-        if (this.pages.current_page != 1) {
-          this.change(--this.pages.current_page);
-        }
-      },
-      change(page) {
-        this.$emit('change', page);
-      },
-      next() {
-        if (this.pages.current_page != this.pages.last_page) {
-          this.change(++this.pages.current_page);
-        }
-      },
-      lastPage(page){
-        if (this.pages.current_page != this.pages.last_page) {
-          this.change(page);
-        }
-      },
-      changePageWithKeyBoard(key) {
-        if (key === 'ArrowLeft') {
-          this.previous();
-        }
-        else if (key === 'ArrowRight') {
-          this.next();
-        }
+    previous (e) {
+      e.preventDefault()
+      if (this.pages.current_page !== 1) {
+        this.change(e, --this.pages.current_page)
       }
     },
-    created() {
-      window.addEventListener('keyup', ({key}) => this.changePageWithKeyBoard(key));
+    change (e, page) {
+      e.preventDefault()
+      EventBus.$emit('pagination-change', page)
+    },
+    next (e) {
+      e.preventDefault()
+      if (this.pages.current_page !== this.pages.last_page) {
+        this.change(e, ++this.pages.current_page)
+      }
+    },
+    lastPage (e, page) {
+      e.preventDefault()
+      if (this.pages.current_page !== this.pages.last_page) {
+        this.change(e, page)
+      }
+    },
+    changePageWithKeyBoard (key) {
+      if (key === 'ArrowLeft') {
+        this.previous()
+      } else if (key === 'ArrowRight') {
+        this.next()
+      }
     }
   }
+}
 </script>
-<style lang="sass" scoped>
-  .Vue__pagination {
-
-  nav {
-
-  .pagination {
-    margin: 10px 0 !important;
-  }
-
-  }
-  }
+<style scoped>
+.vue-pagination nav .pagination {
+    margin: 10px 0
+}
 </style>
