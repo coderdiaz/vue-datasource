@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-    A Vue.js server side component to create dynamic tables. Compatible with Vue 2.x and Laravel.
+    A Vue.js component to create dynamic tables. Compatible with Vue 2.x and Laravel.
 </p>
 
 <p align="center">
@@ -55,6 +55,8 @@ new Vue({
 });
 ```
 
+ClienSide component is comming soon..
+
 ### Available Props
 | Prop        | Type    | Default        | Description                                                 |
 |-------------|---------|----------------|-------------------------------------------------------------|
@@ -69,6 +71,20 @@ new Vue({
 |-------------|-----------------------------------------------------------------------------------------------------|
 | change      | Handle show limit changed. Gets object with new show limit and current page `{perpage: 10, page: 2}`|
 | searching   | Handles search input. Gets string as parameter                                                      |
+
+### Data API Example
+```javascript
+{
+    "pagination": {
+        "total": 0,
+        "to": 0,
+        "from": 0,
+        "per_page": 10,
+        "current_page": 1
+    },
+    "data": [...items]
+}
+```
 
 ### Columns
 Each column object needs a `name` and `key` attributes.
