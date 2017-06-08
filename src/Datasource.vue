@@ -183,7 +183,10 @@
 
           this.columnSortSelected.key = key;
 
-        this.$emit('column-sort',this.columnSortSelected);
+        this.$emit('column-sort', {
+            'key': this.columnSortSelected.key,
+            'order': (this.columnSortSelected.order ? 'ASC' : 'DESC')
+        });
       },
       shouldShowUpArrow(key){
           return this.columnSortSelected.key === key  && this.columnSortSelected.order === true
