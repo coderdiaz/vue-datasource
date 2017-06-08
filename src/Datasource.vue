@@ -14,7 +14,8 @@
           <div class="form-group pull-right">
             <input class="form-control" type="text"
                    v-model="search"
-                   :placeholder="translation.table.placeholder_search">
+                   :placeholder="translation.table.placeholder_search"
+                   @keyup.enter="searching">
             <button type="button" class="btn btn-primary"
                     @click.prevent="searching">{{ translation.table.label_search }}
             </button>
@@ -27,7 +28,11 @@
           <thead>
           <tr>
             <!--columns-->
-            <th v-for="column in columns">{{ column.name }}</th>
+            <th @click="columnSort(key)" v-for="column,key in columns">
+              {{ column.name }}
+              <span v-show="shouldShowUpArrow(key)" class="glyphicon glyphicon-triangle-top"></span>
+              <span v-show="shouldShowDownArrow(key)" class="glyphicon glyphicon-triangle-bottom"></span>
+            </th>
             <!--/columns-->
           </tr>
           </thead>
@@ -143,7 +148,12 @@
         perpage: 15, // default value to show records
         selected: null, // row and Object selected on click event
         indexSelected: -1, // index row selected on click event
-        search: '' // word to search in the table
+        search: '', // word to search in the table
+        columnSortSelected:{
+            key:null,
+            order:true
+        },
+
       }
     },
     computed: {
@@ -164,7 +174,27 @@
         this.selected = null;
         this.indexSelected = -1;
         this.$emit('searching', this.search);
+      },
+      columnSort(key){
+        if(this.columnSortSelected.key === key)
+          this.columnSortSelected.order = !this.columnSortSelected.order
+        else
+          this.columnSortSelected.order = false;
+
+          this.columnSortSelected.key = key;
+
+        this.$emit('column-sort', {
+            'key': this.columnSortSelected.key,
+            'order': (this.columnSortSelected.order ? 'ASC' : 'DESC')
+        });
+      },
+      shouldShowUpArrow(key){
+          return this.columnSortSelected.key === key  && this.columnSortSelected.order === true
+      },
+      shouldShowDownArrow(key){
+          return this.columnSortSelected.key === key  && this.columnSortSelected.order === false
       }
+
     },
     watch: {
       /**
@@ -184,22 +214,24 @@
   }
 </script>
 <style lang="sass" scoped>
+
+  th{
+      cursor:pointer;
+    }
+
   .vue-datasource {
+    .Vue__panel-body {
+      padding: 0;
 
-  .Vue__panel-body {
-    padding: 0;
+      .Vue__table {
+        margin-bottom: 0;
+      }
+    }
 
-  .Vue__table {
-    margin-bottom: 0;
-  }
-
-  }
-  .Vue__panel-footer {
-
-  .Vue__datasource_actions {
-    margin: 10px 0;
-  }
-
-  }
+    .Vue__panel-footer {
+      .Vue__datasource_actions {
+        margin: 10px 0;
+      }
+    }
   }
 </style>
