@@ -394,7 +394,13 @@
 	      perpage: 15,
 	      selected: null,
 	      indexSelected: -1,
-	      search: '' };
+	      search: '',
+	      columnSortSelected: {
+	        key: null,
+	        order: true
+	      }
+	
+	    };
 	  },
 	
 	  computed: {
@@ -412,6 +418,22 @@
 	      this.selected = null;
 	      this.indexSelected = -1;
 	      this.$emit('searching', this.search);
+	    },
+	    columnSort: function columnSort(key) {
+	      if (this.columnSortSelected.key === key) this.columnSortSelected.order = !this.columnSortSelected.order;else this.columnSortSelected.order = false;
+	
+	      this.columnSortSelected.key = key;
+	
+	      this.$emit('column-sort', {
+	        'key': this.columnSortSelected.key,
+	        'order': this.columnSortSelected.order ? 'ASC' : 'DESC'
+	      });
+	    },
+	    shouldShowUpArrow: function shouldShowUpArrow(key) {
+	      return this.columnSortSelected.key === key && this.columnSortSelected.order === true;
+	    },
+	    shouldShowDownArrow: function shouldShowDownArrow(key) {
+	      return this.columnSortSelected.key === key && this.columnSortSelected.order === false;
 	    }
 	  },
 	  watch: {
@@ -877,7 +899,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n.vue-datasource .Vue__panel-body[data-v-0747af48] {\n  padding: 0;\n}\n.vue-datasource .Vue__panel-body .Vue__table[data-v-0747af48] {\n    margin-bottom: 0;\n}\n.vue-datasource .Vue__panel-footer .Vue__datasource_actions[data-v-0747af48] {\n  margin: 10px 0;\n}\n", ""]);
+	exports.push([module.id, "\n.Vue__pagination nav .pagination[data-v-2b3d1a0f] {\n  margin: 10px 0 !important;\n}\n", ""]);
 	
 	// exports
 
@@ -891,7 +913,7 @@
 	
 	
 	// module
-	exports.push([module.id, "\n.Vue__pagination nav .pagination[data-v-741f57a8] {\n  margin: 10px 0 !important;\n}\n", ""]);
+	exports.push([module.id, "\nth[data-v-a81f9b4e] {\n  cursor: pointer;\n}\n.vue-datasource .Vue__panel-body[data-v-a81f9b4e] {\n  padding: 0;\n}\n.vue-datasource .Vue__panel-body .Vue__table[data-v-a81f9b4e] {\n    margin-bottom: 0;\n}\n.vue-datasource .Vue__panel-footer .Vue__datasource_actions[data-v-a81f9b4e] {\n  margin: 10px 0;\n}\n", ""]);
 	
 	// exports
 
@@ -904,43 +926,10 @@
 	var __vue_styles__ = {}
 	
 	/* styles */
-	__webpack_require__(17)
-	
-	/* script */
-	__vue_exports__ = __webpack_require__(3)
-	
-	/* template */
-	var __vue_template__ = __webpack_require__(15)
-	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-	if (
-	  typeof __vue_exports__.default === "object" ||
-	  typeof __vue_exports__.default === "function"
-	) {
-	__vue_options__ = __vue_exports__ = __vue_exports__.default
-	}
-	if (typeof __vue_options__ === "function") {
-	  __vue_options__ = __vue_options__.options
-	}
-	
-	__vue_options__.render = __vue_template__.render
-	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-0747af48"
-	
-	module.exports = __vue_exports__
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	var __vue_exports__, __vue_options__
-	var __vue_styles__ = {}
-	
-	/* styles */
 	__webpack_require__(18)
 	
 	/* script */
-	__vue_exports__ = __webpack_require__(4)
+	__vue_exports__ = __webpack_require__(3)
 	
 	/* template */
 	var __vue_template__ = __webpack_require__(16)
@@ -957,164 +946,46 @@
 	
 	__vue_options__.render = __vue_template__.render
 	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-	__vue_options__._scopeId = "data-v-741f57a8"
+	__vue_options__._scopeId = "data-v-a81f9b4e"
+	
+	module.exports = __vue_exports__
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var __vue_exports__, __vue_options__
+	var __vue_styles__ = {}
+	
+	/* styles */
+	__webpack_require__(17)
+	
+	/* script */
+	__vue_exports__ = __webpack_require__(4)
+	
+	/* template */
+	var __vue_template__ = __webpack_require__(15)
+	__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+	if (
+	  typeof __vue_exports__.default === "object" ||
+	  typeof __vue_exports__.default === "function"
+	) {
+	__vue_options__ = __vue_exports__ = __vue_exports__.default
+	}
+	if (typeof __vue_options__ === "function") {
+	  __vue_options__ = __vue_options__.options
+	}
+	
+	__vue_options__.render = __vue_template__.render
+	__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+	__vue_options__._scopeId = "data-v-2b3d1a0f"
 	
 	module.exports = __vue_exports__
 
 
 /***/ }),
 /* 15 */
-/***/ (function(module, exports) {
-
-	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-	  return _c('div', {
-	    staticClass: "vue-datasource"
-	  }, [_c('div', {
-	    staticClass: "panel panel-default"
-	  }, [_c('div', {
-	    staticClass: "panel-heading"
-	  }, [_c('div', {
-	    staticClass: "form-inline"
-	  }, [_c('div', {
-	    staticClass: "form-group pull-left"
-	  }, [_c('label', {
-	    staticClass: "control-label pr2"
-	  }, [_vm._v(_vm._s(_vm.translation.table.label_limits))]), _vm._v(" "), _c('select', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.perpage),
-	      expression: "perpage"
-	    }],
-	    staticClass: "form-control",
-	    attrs: {
-	      "number": ""
-	    },
-	    on: {
-	      "change": function($event) {
-	        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
-	          return o.selected
-	        }).map(function(o) {
-	          var val = "_value" in o ? o._value : o.value;
-	          return val
-	        });
-	        _vm.perpage = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-	      }
-	    }
-	  }, _vm._l((_vm.limits), function(limit) {
-	    return _c('option', {
-	      domProps: {
-	        "value": limit
-	      }
-	    }, [_vm._v(_vm._s(limit))])
-	  }))]), _vm._v(" "), _c('div', {
-	    staticClass: "form-group pull-right"
-	  }, [_c('input', {
-	    directives: [{
-	      name: "model",
-	      rawName: "v-model",
-	      value: (_vm.search),
-	      expression: "search"
-	    }],
-	    staticClass: "form-control",
-	    attrs: {
-	      "type": "text",
-	      "placeholder": _vm.translation.table.placeholder_search
-	    },
-	    domProps: {
-	      "value": (_vm.search)
-	    },
-	    on: {
-	      "input": function($event) {
-	        if ($event.target.composing) { return; }
-	        _vm.search = $event.target.value
-	      }
-	    }
-	  }), _vm._v(" "), _c('button', {
-	    staticClass: "btn btn-primary",
-	    attrs: {
-	      "type": "button"
-	    },
-	    on: {
-	      "click": function($event) {
-	        $event.preventDefault();
-	        _vm.searching($event)
-	      }
-	    }
-	  }, [_vm._v(_vm._s(_vm.translation.table.label_search) + "\n          ")])]), _vm._v(" "), _c('div', {
-	    staticClass: "clearfix"
-	  })])]), _vm._v(" "), _c('div', {
-	    staticClass: "panel-body Vue__panel-body"
-	  }, [_c('table', {
-	    staticClass: "table table-striped Vue__table"
-	  }, [_c('thead', [_c('tr', _vm._l((_vm.columns), function(column) {
-	    return _c('th', [_vm._v(_vm._s(column.name))])
-	  }))]), _vm._v(" "), _c('tbody', [(_vm.pagination.total == 0) ? _c('tr', [_c('td', {
-	    attrs: {
-	      "colspan": _vm.columns.length
-	    }
-	  }, [_vm._v(_vm._s(_vm.translation.table.records_not_found))])]) : _vm._l((_vm.tableData), function(row, index) {
-	    return _c('tr', {
-	      class: {
-	        'success': (index == _vm.indexSelected)
-	      },
-	      on: {
-	        "click": function($event) {
-	          $event.preventDefault();
-	          _vm.selectRow(row, index)
-	        }
-	      }
-	    }, _vm._l((_vm.columns), function(k) {
-	      return _c('td', {
-	        domProps: {
-	          "innerHTML": _vm._s(_vm.fetchFromObject(row, k.key, k.render))
-	        }
-	      })
-	    }))
-	  }), _vm._v(" "), _c('tr', [_c('td', {
-	    staticClass: "text-center",
-	    attrs: {
-	      "colspan": _vm.columns.length
-	    }
-	  }, [_vm._v("\n            " + _vm._s(_vm.tableInfo) + "\n          ")])])], 2)])]), _vm._v(" "), _c('div', {
-	    staticClass: "panel-footer Vue__panel-footer"
-	  }, [_c('div', {
-	    staticClass: "pull-left"
-	  }, [_c('div', {
-	    staticClass: "btn-group Vue__datasource_actions"
-	  }, _vm._l((_vm.actions), function(btn) {
-	    return _c('button', {
-	      staticClass: "btn btn-default",
-	      class: btn.class,
-	      attrs: {
-	        "type": "button"
-	      },
-	      on: {
-	        "click": function($event) {
-	          btn.event($event, _vm.selected)
-	        }
-	      }
-	    }, [(btn.icon) ? _c('i', {
-	      staticClass: "pr1",
-	      class: btn.icon
-	    }) : _vm._e(), _vm._v("\n            " + _vm._s(btn.text) + "\n          ")])
-	  }))]), _vm._v(" "), _c('div', {
-	    staticClass: "pull-right"
-	  }, [_c('pagination', {
-	    attrs: {
-	      "pages": _vm.pagination,
-	      "translation": _vm.translation.pagination
-	    },
-	    on: {
-	      "change": _vm.changePage
-	    }
-	  })], 1), _vm._v(" "), _c('div', {
-	    staticClass: "clearfix"
-	  })])])])
-	},staticRenderFns: []}
-
-/***/ }),
-/* 16 */
 /***/ (function(module, exports) {
 
 	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -1202,6 +1073,183 @@
 	},staticRenderFns: []}
 
 /***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+	module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+	  return _c('div', {
+	    staticClass: "vue-datasource"
+	  }, [_c('div', {
+	    staticClass: "panel panel-default"
+	  }, [_c('div', {
+	    staticClass: "panel-heading"
+	  }, [_c('div', {
+	    staticClass: "form-inline"
+	  }, [_c('div', {
+	    staticClass: "form-group pull-left"
+	  }, [_c('label', {
+	    staticClass: "control-label pr2"
+	  }, [_vm._v(_vm._s(_vm.translation.table.label_limits))]), _vm._v(" "), _c('select', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.perpage),
+	      expression: "perpage"
+	    }],
+	    staticClass: "form-control",
+	    attrs: {
+	      "number": ""
+	    },
+	    on: {
+	      "change": function($event) {
+	        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+	          return o.selected
+	        }).map(function(o) {
+	          var val = "_value" in o ? o._value : o.value;
+	          return val
+	        });
+	        _vm.perpage = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+	      }
+	    }
+	  }, _vm._l((_vm.limits), function(limit) {
+	    return _c('option', {
+	      domProps: {
+	        "value": limit
+	      }
+	    }, [_vm._v(_vm._s(limit))])
+	  }))]), _vm._v(" "), _c('div', {
+	    staticClass: "form-group pull-right"
+	  }, [_c('input', {
+	    directives: [{
+	      name: "model",
+	      rawName: "v-model",
+	      value: (_vm.search),
+	      expression: "search"
+	    }],
+	    staticClass: "form-control",
+	    attrs: {
+	      "type": "text",
+	      "placeholder": _vm.translation.table.placeholder_search
+	    },
+	    domProps: {
+	      "value": (_vm.search)
+	    },
+	    on: {
+	      "keyup": function($event) {
+	        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+	        _vm.searching($event)
+	      },
+	      "input": function($event) {
+	        if ($event.target.composing) { return; }
+	        _vm.search = $event.target.value
+	      }
+	    }
+	  }), _vm._v(" "), _c('button', {
+	    staticClass: "btn btn-primary",
+	    attrs: {
+	      "type": "button"
+	    },
+	    on: {
+	      "click": function($event) {
+	        $event.preventDefault();
+	        _vm.searching($event)
+	      }
+	    }
+	  }, [_vm._v(_vm._s(_vm.translation.table.label_search) + "\n          ")])]), _vm._v(" "), _c('div', {
+	    staticClass: "clearfix"
+	  })])]), _vm._v(" "), _c('div', {
+	    staticClass: "panel-body Vue__panel-body"
+	  }, [_c('table', {
+	    staticClass: "table table-striped Vue__table"
+	  }, [_c('thead', [_c('tr', _vm._l((_vm.columns), function(column, key) {
+	    return _c('th', {
+	      on: {
+	        "click": function($event) {
+	          _vm.columnSort(key)
+	        }
+	      }
+	    }, [_vm._v("\n            " + _vm._s(column.name) + "\n            "), _c('span', {
+	      directives: [{
+	        name: "show",
+	        rawName: "v-show",
+	        value: (_vm.shouldShowUpArrow(key)),
+	        expression: "shouldShowUpArrow(key)"
+	      }],
+	      staticClass: "glyphicon glyphicon-triangle-top"
+	    }), _vm._v(" "), _c('span', {
+	      directives: [{
+	        name: "show",
+	        rawName: "v-show",
+	        value: (_vm.shouldShowDownArrow(key)),
+	        expression: "shouldShowDownArrow(key)"
+	      }],
+	      staticClass: "glyphicon glyphicon-triangle-bottom"
+	    })])
+	  }))]), _vm._v(" "), _c('tbody', [(_vm.pagination.total == 0) ? _c('tr', [_c('td', {
+	    attrs: {
+	      "colspan": _vm.columns.length
+	    }
+	  }, [_vm._v(_vm._s(_vm.translation.table.records_not_found))])]) : _vm._l((_vm.tableData), function(row, index) {
+	    return _c('tr', {
+	      class: {
+	        'success': (index == _vm.indexSelected)
+	      },
+	      on: {
+	        "click": function($event) {
+	          $event.preventDefault();
+	          _vm.selectRow(row, index)
+	        }
+	      }
+	    }, _vm._l((_vm.columns), function(k) {
+	      return _c('td', {
+	        domProps: {
+	          "innerHTML": _vm._s(_vm.fetchFromObject(row, k.key, k.render))
+	        }
+	      })
+	    }))
+	  }), _vm._v(" "), _c('tr', [_c('td', {
+	    staticClass: "text-center",
+	    attrs: {
+	      "colspan": _vm.columns.length
+	    }
+	  }, [_vm._v("\n            " + _vm._s(_vm.tableInfo) + "\n          ")])])], 2)])]), _vm._v(" "), _c('div', {
+	    staticClass: "panel-footer Vue__panel-footer"
+	  }, [_c('div', {
+	    staticClass: "pull-left"
+	  }, [_c('div', {
+	    staticClass: "btn-group Vue__datasource_actions"
+	  }, _vm._l((_vm.actions), function(btn) {
+	    return _c('button', {
+	      staticClass: "btn btn-default",
+	      class: btn.class,
+	      attrs: {
+	        "type": "button"
+	      },
+	      on: {
+	        "click": function($event) {
+	          btn.event($event, _vm.selected)
+	        }
+	      }
+	    }, [(btn.icon) ? _c('i', {
+	      staticClass: "pr1",
+	      class: btn.icon
+	    }) : _vm._e(), _vm._v("\n            " + _vm._s(btn.text) + "\n          ")])
+	  }))]), _vm._v(" "), _c('div', {
+	    staticClass: "pull-right"
+	  }, [_c('pagination', {
+	    attrs: {
+	      "pages": _vm.pagination,
+	      "translation": _vm.translation.pagination
+	    },
+	    on: {
+	      "change": _vm.changePage
+	    }
+	  })], 1), _vm._v(" "), _c('div', {
+	    staticClass: "clearfix"
+	  })])])])
+	},staticRenderFns: []}
+
+/***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1217,8 +1265,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-0747af48&scoped=true!../node_modules/sass-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Datasource.vue", function() {
-				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-0747af48&scoped=true!../node_modules/sass-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Datasource.vue");
+			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2b3d1a0f&scoped=true!../../node_modules/sass-loader/index.js!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Pagination.vue", function() {
+				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-2b3d1a0f&scoped=true!../../node_modules/sass-loader/index.js!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Pagination.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1243,8 +1291,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-741f57a8&scoped=true!../../node_modules/sass-loader/index.js!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Pagination.vue", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-741f57a8&scoped=true!../../node_modules/sass-loader/index.js!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Pagination.vue");
+			module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a81f9b4e&scoped=true!../node_modules/sass-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Datasource.vue", function() {
+				var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-a81f9b4e&scoped=true!../node_modules/sass-loader/index.js!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Datasource.vue");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -1258,7 +1306,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/*!
-	 * Vue.js v2.3.2
+	 * Vue.js v2.3.3
 	 * (c) 2014-2017 Evan You
 	 * Released under the MIT License.
 	 */
@@ -1284,6 +1332,9 @@
 	  return v === true
 	}
 	
+	function isFalse (v) {
+	  return v === false
+	}
 	/**
 	 * Check if value is primitive
 	 */
@@ -2679,7 +2730,8 @@
 	  // return previous default value to avoid unnecessary watcher trigger
 	  if (vm && vm.$options.propsData &&
 	    vm.$options.propsData[key] === undefined &&
-	    vm._props[key] !== undefined) {
+	    vm._props[key] !== undefined
+	  ) {
 	    return vm._props[key]
 	  }
 	  // call factory function for non-Function types
@@ -2953,6 +3005,7 @@
 	  cloned.ns = vnode.ns;
 	  cloned.isStatic = vnode.isStatic;
 	  cloned.key = vnode.key;
+	  cloned.isComment = vnode.isComment;
 	  cloned.isCloned = true;
 	  return cloned
 	}
@@ -3171,6 +3224,10 @@
 	      : undefined
 	}
 	
+	function isTextNode (node) {
+	  return isDef(node) && isDef(node.text) && isFalse(node.isComment)
+	}
+	
 	function normalizeArrayChildren (children, nestedIndex) {
 	  var res = [];
 	  var i, c, last;
@@ -3182,18 +3239,25 @@
 	    if (Array.isArray(c)) {
 	      res.push.apply(res, normalizeArrayChildren(c, ((nestedIndex || '') + "_" + i)));
 	    } else if (isPrimitive(c)) {
-	      if (isDef(last) && isDef(last.text)) {
-	        last.text += String(c);
+	      if (isTextNode(last)) {
+	        // merge adjacent text nodes
+	        // this is necessary for SSR hydration because text nodes are
+	        // essentially merged when rendered to HTML strings
+	        (last).text += String(c);
 	      } else if (c !== '') {
 	        // convert primitive to vnode
 	        res.push(createTextVNode(c));
 	      }
 	    } else {
-	      if (isDef(c.text) && isDef(last) && isDef(last.text)) {
+	      if (isTextNode(c) && isTextNode(last)) {
+	        // merge adjacent text nodes
 	        res[res.length - 1] = createTextVNode(last.text + c.text);
 	      } else {
 	        // default key for nested array children (likely generated by v-for)
-	        if (isDef(c.tag) && isUndef(c.key) && isDef(nestedIndex)) {
+	        if (isTrue(children._isVList) &&
+	          isDef(c.tag) &&
+	          isUndef(c.key) &&
+	          isDef(nestedIndex)) {
 	          c.key = "__vlist" + nestedIndex + "_" + i + "__";
 	        }
 	        res.push(c);
@@ -3293,9 +3357,11 @@
 	
 	        if (isDef(res.timeout)) {
 	          setTimeout(function () {
-	            reject(
-	              "timeout (" + (res.timeout) + "ms)"
-	            );
+	            if (isUndef(factory.resolved)) {
+	              reject(
+	                "timeout (" + (res.timeout) + "ms)"
+	              );
+	            }
 	          }, res.timeout);
 	        }
 	      }
@@ -3474,7 +3540,8 @@
 	    // named slots should only be respected if the vnode was rendered in the
 	    // same context.
 	    if ((child.context === context || child.functionalContext === context) &&
-	        child.data && child.data.slot != null) {
+	      child.data && child.data.slot != null
+	    ) {
 	      var name = child.data.slot;
 	      var slot = (slots[name] || (slots[name] = []));
 	      if (child.tag === 'template') {
@@ -3498,11 +3565,16 @@
 	}
 	
 	function resolveScopedSlots (
-	  fns
+	  fns, // see flow/vnode
+	  res
 	) {
-	  var res = {};
+	  res = res || {};
 	  for (var i = 0; i < fns.length; i++) {
-	    res[fns[i][0]] = fns[i][1];
+	    if (Array.isArray(fns[i])) {
+	      resolveScopedSlots(fns[i], res);
+	    } else {
+	      res[fns[i].key] = fns[i].fn;
+	    }
 	  }
 	  return res
 	}
@@ -3820,7 +3892,7 @@
 	 * Reset the scheduler's state.
 	 */
 	function resetSchedulerState () {
-	  queue.length = activatedChildren.length = 0;
+	  index = queue.length = activatedChildren.length = 0;
 	  has = {};
 	  {
 	    circular = {};
@@ -3930,10 +4002,10 @@
 	      // if already flushing, splice the watcher based on its id
 	      // if already past its id, it will be run next immediately.
 	      var i = queue.length - 1;
-	      while (i >= 0 && queue[i].id > watcher.id) {
+	      while (i > index && queue[i].id > watcher.id) {
 	        i--;
 	      }
-	      queue.splice(Math.max(i, index) + 1, 0, watcher);
+	      queue.splice(i + 1, 0, watcher);
 	    }
 	    // queue the flush
 	    if (!waiting) {
@@ -4830,7 +4902,8 @@
 	  }
 	  // support single function children as default scoped slot
 	  if (Array.isArray(children) &&
-	      typeof children[0] === 'function') {
+	    typeof children[0] === 'function'
+	  ) {
 	    data = data || {};
 	    data.scopedSlots = { default: children[0] };
 	    children.length = 0;
@@ -4917,6 +4990,9 @@
 	      key = keys[i];
 	      ret[i] = render(val[key], key, i);
 	    }
+	  }
+	  if (isDef(ret)) {
+	    (ret)._isVList = true;
 	  }
 	  return ret
 	}
@@ -5313,7 +5389,8 @@
 	
 	function Vue$3 (options) {
 	  if ("development" !== 'production' &&
-	    !(this instanceof Vue$3)) {
+	    !(this instanceof Vue$3)
+	  ) {
 	    warn('Vue is a constructor and should be called with the `new` keyword');
 	  }
 	  this._init(options);
@@ -5331,7 +5408,7 @@
 	  Vue.use = function (plugin) {
 	    /* istanbul ignore if */
 	    if (plugin.installed) {
-	      return
+	      return this
 	    }
 	    // additional parameters
 	    var args = toArray(arguments, 1);
@@ -5351,6 +5428,7 @@
 	function initMixin$1 (Vue) {
 	  Vue.mixin = function (mixin) {
 	    this.options = mergeOptions(this.options, mixin);
+	    return this
 	  };
 	}
 	
@@ -5644,11 +5722,12 @@
 	
 	Object.defineProperty(Vue$3.prototype, '$ssrContext', {
 	  get: function get () {
+	    /* istanbul ignore next */
 	    return this.$vnode.ssrContext
 	  }
 	});
 	
-	Vue$3.version = '2.3.2';
+	Vue$3.version = '2.3.3';
 	
 	/*  */
 	
@@ -6229,8 +6308,9 @@
 	    }
 	    // for slot content they should also get the scopeId from the host instance.
 	    if (isDef(i = activeInstance) &&
-	        i !== vnode.context &&
-	        isDef(i = i.$options._scopeId)) {
+	      i !== vnode.context &&
+	      isDef(i = i.$options._scopeId)
+	    ) {
 	      nodeOps.setAttribute(vnode.elm, i, '');
 	    }
 	  }
@@ -6382,9 +6462,10 @@
 	    // if the new node is not cloned it means the render functions have been
 	    // reset by the hot-reload-api and we need to do a proper re-render.
 	    if (isTrue(vnode.isStatic) &&
-	        isTrue(oldVnode.isStatic) &&
-	        vnode.key === oldVnode.key &&
-	        (isTrue(vnode.isCloned) || isTrue(vnode.isOnce))) {
+	      isTrue(oldVnode.isStatic) &&
+	      vnode.key === oldVnode.key &&
+	      (isTrue(vnode.isCloned) || isTrue(vnode.isOnce))
+	    ) {
 	      vnode.elm = oldVnode.elm;
 	      vnode.componentInstance = oldVnode.componentInstance;
 	      return
@@ -6475,8 +6556,9 @@
 	          // longer than the virtual children list.
 	          if (!childrenMatch || childNode) {
 	            if ("development" !== 'production' &&
-	                typeof console !== 'undefined' &&
-	                !bailed) {
+	              typeof console !== 'undefined' &&
+	              !bailed
+	            ) {
 	              bailed = true;
 	              console.warn('Parent: ', elm);
 	              console.warn('Mismatching childNodes vs. VNodes: ', elm.childNodes, children);
@@ -7613,7 +7695,8 @@
 	  var oldData = oldVnode.data;
 	
 	  if (isUndef(data.staticStyle) && isUndef(data.style) &&
-	      isUndef(oldData.staticStyle) && isUndef(oldData.style)) {
+	    isUndef(oldData.staticStyle) && isUndef(oldData.style)
+	  ) {
 	    return
 	  }
 	
@@ -7751,12 +7834,14 @@
 	if (hasTransition) {
 	  /* istanbul ignore if */
 	  if (window.ontransitionend === undefined &&
-	    window.onwebkittransitionend !== undefined) {
+	    window.onwebkittransitionend !== undefined
+	  ) {
 	    transitionProp = 'WebkitTransition';
 	    transitionEndEvent = 'webkitTransitionEnd';
 	  }
 	  if (window.onanimationend === undefined &&
-	    window.onwebkitanimationend !== undefined) {
+	    window.onwebkitanimationend !== undefined
+	  ) {
 	    animationProp = 'WebkitAnimation';
 	    animationEndEvent = 'webkitAnimationEnd';
 	  }
@@ -7996,8 +8081,9 @@
 	      var parent = el.parentNode;
 	      var pendingNode = parent && parent._pending && parent._pending[vnode.key];
 	      if (pendingNode &&
-	          pendingNode.tag === vnode.tag &&
-	          pendingNode.elm._leaveCb) {
+	        pendingNode.tag === vnode.tag &&
+	        pendingNode.elm._leaveCb
+	      ) {
 	        pendingNode.elm._leaveCb();
 	      }
 	      enterHook && enterHook(el, cb);
@@ -8330,6 +8416,8 @@
 	}
 	
 	function onCompositionEnd (e) {
+	  // prevent triggering an input event for no reason
+	  if (!e.target.composing) { return }
 	  e.target.composing = false;
 	  trigger(e.target, 'input');
 	}
@@ -8512,7 +8600,8 @@
 	
 	    // warn invalid mode
 	    if ("development" !== 'production' &&
-	        mode && mode !== 'in-out' && mode !== 'out-in') {
+	      mode && mode !== 'in-out' && mode !== 'out-in'
+	    ) {
 	      warn(
 	        'invalid <transition> mode: ' + mode,
 	        this.$parent
@@ -8796,8 +8885,9 @@
 	    }
 	  }
 	  if ("development" !== 'production' &&
-	      config.productionTip !== false &&
-	      inBrowser && typeof console !== 'undefined') {
+	    config.productionTip !== false &&
+	    inBrowser && typeof console !== 'undefined'
+	  ) {
 	    console[console.info ? 'info' : 'log'](
 	      "You are running Vue in development mode.\n" +
 	      "Make sure to turn on production mode when deploying for production.\n" +
@@ -9130,8 +9220,9 @@
 	      // Close all the open elements, up the stack
 	      for (var i = stack.length - 1; i >= pos; i--) {
 	        if ("development" !== 'production' &&
-	            (i > pos || !tagName) &&
-	            options.warn) {
+	          (i > pos || !tagName) &&
+	          options.warn
+	        ) {
 	          options.warn(
 	            ("tag <" + (stack[i].tag) + "> has no matching end tag.")
 	          );
@@ -9426,8 +9517,9 @@
 	      // IE textarea placeholder bug
 	      /* istanbul ignore if */
 	      if (isIE &&
-	          currentParent.tag === 'textarea' &&
-	          currentParent.attrsMap.placeholder === text) {
+	        currentParent.tag === 'textarea' &&
+	        currentParent.attrsMap.placeholder === text
+	      ) {
 	        return
 	      }
 	      var children = currentParent.children;
@@ -9931,17 +10023,17 @@
 	
 	function genHandlers (
 	  events,
-	  native,
+	  isNative,
 	  warn
 	) {
-	  var res = native ? 'nativeOn:{' : 'on:{';
+	  var res = isNative ? 'nativeOn:{' : 'on:{';
 	  for (var name in events) {
 	    var handler = events[name];
 	    // #5330: warn click.right, since right clicks do not actually fire click events.
 	    if ("development" !== 'production' &&
-	        name === 'click' &&
-	        handler && handler.modifiers && handler.modifiers.right
-	      ) {
+	      name === 'click' &&
+	      handler && handler.modifiers && handler.modifiers.right
+	    ) {
 	      warn(
 	        "Use \"contextmenu\" instead of \"click.right\" since right clicks " +
 	        "do not actually fire \"click\" events."
@@ -10296,10 +10388,25 @@
 	}
 	
 	function genScopedSlot (key, el) {
-	  return "[" + key + ",function(" + (String(el.attrsMap.scope)) + "){" +
+	  if (el.for && !el.forProcessed) {
+	    return genForScopedSlot(key, el)
+	  }
+	  return "{key:" + key + ",fn:function(" + (String(el.attrsMap.scope)) + "){" +
 	    "return " + (el.tag === 'template'
 	      ? genChildren(el) || 'void 0'
-	      : genElement(el)) + "}]"
+	      : genElement(el)) + "}}"
+	}
+	
+	function genForScopedSlot (key, el) {
+	  var exp = el.for;
+	  var alias = el.alias;
+	  var iterator1 = el.iterator1 ? ("," + (el.iterator1)) : '';
+	  var iterator2 = el.iterator2 ? ("," + (el.iterator2)) : '';
+	  el.forProcessed = true; // avoid recursion
+	  return "_l((" + exp + ")," +
+	    "function(" + alias + iterator1 + iterator2 + "){" +
+	      "return " + (genScopedSlot(key, el)) +
+	    '})'
 	}
 	
 	function genChildren (el, checkSkip) {
@@ -10308,9 +10415,10 @@
 	    var el$1 = children[0];
 	    // optimize single v-for
 	    if (children.length === 1 &&
-	        el$1.for &&
-	        el$1.tag !== 'template' &&
-	        el$1.tag !== 'slot') {
+	      el$1.for &&
+	      el$1.tag !== 'template' &&
+	      el$1.tag !== 'slot'
+	    ) {
 	      return genElement(el$1)
 	    }
 	    var normalizationType = checkSkip ? getNormalizationType(children) : 0;
