@@ -28,7 +28,9 @@
     "url": "https://github.com/coderdiaz/vue-datasource/issues"
   },
   "homepage": "https://github.com/coderdiaz/vue-datasource#readme",
-  "dependencies": {},
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-helper-vue-jsx-merge-props": "^2.0.1",
