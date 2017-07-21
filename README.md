@@ -21,9 +21,6 @@
 ### Demo
 !['Screenshot'](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/screenshot.png)
 
-Live: https://young-falls-97690.herokuapp.com/
-
-
 ### Install/Usage
 ```
 $ npm install vue-datasource
@@ -54,8 +51,17 @@ new Vue({
     }
 });
 ```
+### No demo available at the moment
 
-Client Side component is comming soon..
+## Who is coming?
+[https://medium.com/@coderdiaz/vue-datasource-da794b8e724](https://medium.com/@coderdiaz/vue-datasource-da794b8e724)
+
+## Buy me a coffee
+<a href="https://paypal.me/coderdiaz">
+    <img src="https://www.paypalobjects.com/webstatic/paypalme/images/pp_logo_small.png" width="150">
+</a>
+
+## Documentation
 
 ### Available Props
 | Prop        | Type    | Default        | Description                                                 |
@@ -182,11 +188,6 @@ This callback will modify the data for various operations. Such as applying a sp
     ]
 }
 ```
-
-## Buy me a coffee
-<a href="https://paypal.me/coderdiaz">
-    <img src="src/assets/donate.jpg" width="220">
-</a>
 
 ### Development
 
