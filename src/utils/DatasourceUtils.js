@@ -10,7 +10,7 @@ export default {
     if (typeof obj === 'undefined') return false;
     let _index = column.indexOf('.');
     if (_index > -1) {
-      return this.fetchFromObject(obj[column.substring(0, _index)], column.substr(_index + 1));
+      return this.fetchFromObject(obj[column.substring(0, _index)], column.substr(_index + 1), render);
     }
     if (typeof render != 'undefined') {
       return render(obj[column]);
