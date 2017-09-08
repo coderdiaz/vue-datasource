@@ -18,6 +18,8 @@
 
 ---
 
+<h3>The package are deprecated</h3>
+
 ### Demo
 !['Screenshot'](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/screenshot.png)
 
