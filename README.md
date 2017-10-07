@@ -93,7 +93,7 @@ new Vue({
 ```
 
 ### Columns
-Each column object needs a `name` and `key` attributes.
+Each column object needs `name` and `key` attributes.
 ```javascript
 {
     ...,
@@ -106,7 +106,7 @@ Each column object needs a `name` and `key` attributes.
 }
 ```
 
-For Laravel users, you can access relationships through the `key` attribute. Lets say we have the following object in our users array.
+Laravel users can access relationships through the `key` attribute. Lets say we have the following object in our users array:
 
 ```javascript
 [
