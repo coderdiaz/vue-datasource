@@ -51,15 +51,6 @@ new Vue({
     }
 });
 ```
-### No demo available at the moment
-
-## Who is coming?
-[https://medium.com/@coderdiaz/vue-datasource-da794b8e724](https://medium.com/@coderdiaz/vue-datasource-da794b8e724)
-
-## Buy me a coffee
-<a href="https://paypal.me/coderdiaz">
-    <img src="https://www.paypalobjects.com/webstatic/paypalme/images/pp_logo_small.png" width="150">
-</a>
 
 ## Documentation
 
