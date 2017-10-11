@@ -1,3 +1,5 @@
+const sortDirections = ['DESC', 'ASC']
+
 export default {
   /**
    * Find the element value using Recursive Method and return the value rendered if it's defined
@@ -49,6 +51,13 @@ export default {
         'index': index
       }
     }
+  },
+
+  sortColumn (e, column, index) {
+    e.preventDefault()
+    const sortOrder = sortDirections[this.sortOrder]
+    this.sortOrder = +!this.sortOrder
+    this.$emit('sort', { column, sort: true, order: sortOrder })
   },
 
   /**

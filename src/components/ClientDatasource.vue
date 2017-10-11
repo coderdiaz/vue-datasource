@@ -15,6 +15,7 @@ export default {
         perpage: 10,
         selected: null, // row and Object selected on click event
         indexSelected: -1, // index row selected on click event
+        sortOrder: 0,
         search: '' // word to search in the table
       }
     }
