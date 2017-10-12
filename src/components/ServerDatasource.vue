@@ -3,13 +3,10 @@ import axios from 'axios'
 import _ from 'lodash'
 import DatasourceUtils from '../utils/DatasourceUtils'
 import Pagination from './Pagination.vue'
-import MoonLoader from 'vue-spinner/src/MoonLoader.vue'
 import { EventBus } from '../utils/EventBus'
 export default {
   name: 'ServerDatasource',
-  components: {
-    Pagination, MoonLoader
-  },
+  components: {Pagination},
   render (h) {
     return (
       <div class="vue-server-datasource">
@@ -42,7 +39,6 @@ export default {
                 </tr>
               </tbody>
             </table>
-            { this.spinnerItem }
           </div>
           <div class="panel-footer">
             <div class="pull-left btn-group btn-group-actions">
@@ -124,7 +120,6 @@ export default {
     return {
       perpage: 10,
       tableData: [],
-      loading: false,
       selected: null, // row and Object selected on click event
       indexSelected: -1, // index row selected on click event
       search: '', // word to search in the table,
@@ -138,13 +133,6 @@ export default {
     }
   },
   computed: {
-    spinnerItem () {
-      if (this.loading) {
-        return <div class="vue-spinner-wrapper">
-          <moon-loader></moon-loader>
-        </div>
-      }
-    },
     limitOptions () {
       return this.limits.map((limit, index) => {
         return <option value={ limit } selected={ parseInt(this.perpage) === parseInt(limit) }>{ limit }</option>
@@ -203,16 +191,13 @@ export default {
       this.$emit('searching', this.search)
     },
     setData () {
-      this.loading = true
       axios.get(`${this.source}?per_page=${this.perpage}&page=${this.pagination.current_page}&search=${this.search}`)
       .then((response) => {
-        this.loading = false
         this.tableData = response.data.data
         this.pagination = response.data.pagination
         this.perpage = this.pagination.per_page
       })
       .catch((error) => {
-        this.loading = false
         console.warn(`[VueDatasource] ${error}`)
       })
     }
