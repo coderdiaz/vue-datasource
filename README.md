@@ -213,10 +213,7 @@ For detailed explanation on how things work, checkout the [guide](http://vuejs-t
 ### Contributions
 All contributions are welcome send your PR and Issues.
 
-### Greatings
-[Vue Spinner by Greyby](https://github.com/greyby/vue-spinner)
-
 ### License
 This is a open-source software licensed under the [MIT license](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE)
 
-##### Created by Javier Diaz. Translation by [itsuwaribito](https://github.com/itsuwaribito)
+##### Crafted by Javier Diaz. Translation by [itsuwaribito](https://github.com/itsuwaribito)
