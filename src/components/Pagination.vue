@@ -8,18 +8,18 @@ export default {
       <div class="vue-pagination">
         <nav>
           <ul class="pagination">
-            <li class={{ disabled: this.pages.current_page === 1 }}>
-              <a href="#" on-click={ (e) => this.firstPage(e) }><span aria-hidden="true">&laquo;&laquo;</span></a>
+            <li class={{disabled: this.pages.current_page === 1}}>
+              <a href="#" on-click={(e) => this.firstPage(e)}><span aria-hidden="true">&laquo;&laquo;</span></a>
             </li>
             <li class={{ disabled: this.pages.current_page === 1 }}>
-              <a href="#" on-click={ (e) => this.previous(e) }><span aria-hidden="true">&laquo;</span></a>
+              <a href="#" on-click={(e) => this.previous(e)}><span aria-hidden="true">&laquo;</span></a>
             </li>
-            { this.paginationItems }
-            <li class={{ disabled: this.pages.current_page === this.pages.last_page }}>
-              <a href="#" on-click={ (e) => this.next(e) }><span aria-hidden="true">&raquo;</span></a>
+            {this.paginationItems}
+            <li class={{disabled: this.pages.current_page === this.pages.last_page}}>
+              <a href="#" on-click={(e) => this.next(e)}><span aria-hidden="true">&raquo;</span></a>
             </li>
             <li class={{ disabled: this.pages.current_page === this.pages.last_page }}>
-              <a href="#" on-click={ (e) => this.lastPage(e, this.pages.last_page) }><span aria-hidden="true">&raquo;&raquo;</span></a>
+              <a href="#" on-click={(e) => this.lastPage(e, this.pages.last_page)}><span aria-hidden="true">&raquo;&raquo;</span></a>
             </li>
           </ul>
         </nav>
@@ -34,8 +34,8 @@ export default {
     items: DatasourceUtils.gettingItems,
     paginationItems () {
       return this.items.map((item, index) => {
-        return <li class={{ active: (this.pages.current_page === item) }}>
-          <a href="#" on-click={ (e) => this.change(e, item) }>{ item }</a>
+        return <li class={{active: (this.pages.current_page === item)}}>
+          <a href="#" on-click={(e) => this.change(e, item)}>{item}</a>
         </li>
       })
     }
