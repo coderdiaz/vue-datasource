@@ -13,7 +13,7 @@ export default {
       return this.fetchFromObject(obj[column.substring(0, _index)], column.substr(_index + 1))
     }
     if (typeof render !== 'undefined') {
-      return render(obj[column])
+      return render(obj[column], obj)
     }
     return obj[column]
   },
