@@ -1,7 +1,7 @@
 <script>
 import DatasourceUtils from '../utils/DatasourceUtils'
 import Pagination from './Pagination.vue'
-import { EventBus } from '../utils/EventBus'
+import {EventBus} from '../utils/EventBus'
 export default {
   name: 'ServerDatasource',
   components: {Pagination},
@@ -12,13 +12,13 @@ export default {
           <div class="panel-heading">
             <div class="form-inline">
               <div class="form-group pull-left">
-                <label class="control-label pr2">{ this.translation.limit }</label>
-                <select on-change={ (e) => this.sync('perpage', parseInt(e.target.value)) } class="form-control" number>
-                  { this.limitOptions }
+                <label class="control-label pr2">{this.translation.limit}</label>
+                <select on-change={(e) => this.sync('perpage', parseInt(e.target.value))} class="form-control" number>
+                  {this.limitOptions}
                 </select>
               </div>
               <div class="form-group pull-right">
-                <input class="form-control mr1" type="text" on-input={ (e) => this.searching(e) } placeholder={this.translation.placeholder_search} />
+                <input class="form-control mr1" type="text" on-input={(e) => this.searching(e)} placeholder={this.translation.placeholder_search} />
               </div>
               <div class="clearfix"></div>
             </div>
@@ -27,23 +27,23 @@ export default {
             <table class="table table-striped">
               <thead>
                 <tr>
-                  { this.columnItems }
+                  {this.columnItems}
                 </tr>
               </thead>
               <tbody>
-                { this.columnObjects }
+                {this.columnObjects}
                 <tr>
-                  <td class="text-center warning" colspan={ this.columns.length }>{ this.tableInfo }</td>
+                  <td class="text-center warning" colspan={this.columns.length}>{this.tableInfo}</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="panel-footer">
             <div class="pull-left btn-group btn-group-actions">
-              { this.actionsObject }
+              {this.actionsObject}
             </div>
             <div class="pull-right">
-              <pagination pages={ this.pagination }></pagination>
+              <pagination pages={this.pagination}></pagination>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -131,25 +131,25 @@ export default {
   computed: {
     limitOptions () {
       return this.limits.map((limit, index) => {
-        return <option value={ limit } selected={ parseInt(this.perpage) === parseInt(limit) }>{ limit }</option>
+        return <option value={limit} selected={parseInt(this.perpage) === parseInt(limit)}>{limit}</option>
       })
     },
     columnItems () {
       return this.columns.map((column, index) => {
-        return <th>{ column.name }</th>
+        return <th>{column.name}</th>
       })
     },
     columnObjects () {
       if (this.source.length === 0) {
         return <tr class="text-center">
-          <td colspan={ this.columns.length }>{ this.translation.records_not_found }</td>
+          <td colspan={this.columns.length}>{this.translation.records_not_found}</td>
         </tr>
       } else {
         return this.source.map((row, index) => {
           let columns = this.columns.map((column, index) => {
-            return <td domPropsInnerHTML={ this.fetchFromObject(row, column.key, column.render) }></td>
+            return <td>{this.fetchFromObject(row, column.key, column.render)}</td>
           })
-          return <tr class={{ success: index === this.indexSelected }} on-click={ (e) => this.selectRow(e, row, index) }>{ columns }</tr>
+          return <tr class={{success: index === this.indexSelected}} on-click={(e) => this.selectRow(e, row, index)}>{columns}</tr>
         })
       }
     },
@@ -157,9 +157,9 @@ export default {
       return this.actions.map((action, index) => {
         try {
           if (action.show(this.selected)) {
-            return <button class={this.dynamicClass('btn', action.class)} type="button" on-click={ (e) => action.event(e, this.selected) }>
-              <i class={ this.dynamicClass('pr1', action.icon) }></i>
-              { action.text }
+            return <button class={this.dynamicClass('btn', action.class)} type="button" on-click={(e) => action.event(e, this.selected)}>
+              <i class={this.dynamicClass('pr1', action.icon)}></i>
+              {action.text}
             </button>
           }
         } catch (ex) {
