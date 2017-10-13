@@ -32,8 +32,8 @@ export default {
         {
           name: 'Last Name',
           key: 'last_name',
-          render: function (value) {
-            return `<strong>${value}</strong>`
+          render: (value, row) => {
+            return <strong><i>Epic</i> {value} <img src={row.avatar} width="20" /></strong>
           }
         }
       ],
