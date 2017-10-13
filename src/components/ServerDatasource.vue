@@ -118,6 +118,7 @@ export default {
       perpage: 10,
       selected: null, // row and Object selected on click event
       indexSelected: -1, // index row selected on click event
+      sortOrder: 0, // sort order selected on click event
       search: '', // word to search in the table,
       pagination: {
         total: 0,
@@ -136,7 +137,7 @@ export default {
     },
     columnItems () {
       return this.columns.map((column, index) => {
-        return <th>{ column.name }</th>
+        return <th on-click={ (e) => this.sortColumn(e, column, index) }>{ column.name }</th>
       })
     },
     columnObjects () {
@@ -173,6 +174,7 @@ export default {
     fetchFromObject: DatasourceUtils.fetchFromObject,
     changePage: DatasourceUtils.changePage,
     selectRow: DatasourceUtils.selectRow,
+    sortColumn: DatasourceUtils.sortColumn,
     dynamicClass (defaultClass, customClass) {
       return `${defaultClass} ${customClass}`
     },
@@ -224,9 +226,9 @@ export default {
     width: 100%;
     height: 100%;
     background: rgba(229, 229, 229, 0.5);
-    
+
     .v-spinner {
-      position: absolute; 
+      position: absolute;
       top: 50%;
       left: 50%;
       margin-left: -25px;
