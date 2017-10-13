@@ -1,6 +1,4 @@
 <script>
-import axios from 'axios'
-import _ from 'lodash'
 import DatasourceUtils from '../utils/DatasourceUtils'
 import Pagination from './Pagination.vue'
 import { EventBus } from '../utils/EventBus'
@@ -20,7 +18,7 @@ export default {
                 </select>
               </div>
               <div class="form-group pull-right">
-                <input class="form-control mr1" type="text" on-input={ (e) => this.sync('search', e.target.value) } placeholder={this.translation.placeholder_search} />
+                <input class="form-control mr1" type="text" on-input={ (e) => this.searching(e) } placeholder={this.translation.placeholder_search} />
               </div>
               <div class="clearfix"></div>
             </div>
@@ -55,11 +53,11 @@ export default {
   },
   props: {
     /**
-     * Table source url
+     * Table source data
      * @type {Array}
      */
     source: {
-      type: String,
+      type: Array,
       required: true
     },
     /**
@@ -114,12 +112,10 @@ export default {
   },
   created () {
     EventBus.$on('pagination-change', this.changePage)
-    this.setData()
   },
   data () {
     return {
       perpage: 10,
-      tableData: [],
       selected: null, // row and Object selected on click event
       indexSelected: -1, // index row selected on click event
       search: '', // word to search in the table,
@@ -144,12 +140,12 @@ export default {
       })
     },
     columnObjects () {
-      if (this.tableData.length === 0) {
+      if (this.source.length === 0) {
         return <tr class="text-center">
           <td colspan={ this.columns.length }>{ this.translation.records_not_found }</td>
         </tr>
       } else {
-        return this.tableData.map((row, index) => {
+        return this.source.map((row, index) => {
           let columns = this.columns.map((column, index) => {
             return <td domPropsInnerHTML={ this.fetchFromObject(row, column.key, column.render) }></td>
           })
@@ -187,19 +183,7 @@ export default {
       this.selected = null
       this.indexSelected = -1
       this.pagination.current_page = 1
-      this.setData()
-      this.$emit('searching', this.search)
-    },
-    setData () {
-      axios.get(`${this.source}?per_page=${this.perpage}&page=${this.pagination.current_page}&search=${this.search}`)
-      .then((response) => {
-        this.tableData = response.data.data
-        this.pagination = response.data.pagination
-        this.perpage = this.pagination.per_page
-      })
-      .catch((error) => {
-        console.warn(`[VueDatasource] ${error}`)
-      })
+      this.$emit('searching', e.target.value)
     }
   },
   watch: {
@@ -211,16 +195,12 @@ export default {
       this.selected = null
       this.indexSelected = -1
       this.pagination.current_page = 1
-      this.setData()
       this.$emit('change', {perpage: this.perpage, page: 1})
     },
-    tableData () {
+    source () {
       this.selected = null
       this.indexSelected = -1
-    },
-    search: _.debounce(function () {
-      this.setData()
-    }, 500)
+    }
   }
 }
 </script>

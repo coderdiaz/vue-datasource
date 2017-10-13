@@ -27,7 +27,6 @@ export default {
     this.selected = null
     this.indexSelected = -1
     this.pagination.current_page = page
-    this.setData()
     this.$emit('change', { perpage: this.perpage, page: page })
   },
 

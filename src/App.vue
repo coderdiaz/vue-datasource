@@ -1,14 +1,19 @@
 <script>
+import axios from 'axios'
 import Datasource from './components/ServerDatasource.vue'
 export default {
   name: 'app',
   components: {
     Datasource
   },
+  mounted () {
+    this.getSource()
+  },
   render (h) {
     return (
       <div id="app">
-        <datasource source="http://young-falls-97690.herokuapp.com/getusers" limits={this.limits} actions={this.actions} columns={this.columns}></datasource>
+        <h2 class="text-center mb3">Vue Datasource</h2>
+        <datasource source={this.information} limits={this.limits} actions={this.actions} columns={this.columns} on-change={this.change}></datasource>
       </div>
     )
   },
@@ -21,19 +26,15 @@ export default {
           key: 'id'
         },
         {
-          name: 'Name',
-          key: 'name'
+          name: 'First Name',
+          key: 'first_name'
         },
         {
-          name: 'City',
-          key: 'city',
+          name: 'Last Name',
+          key: 'last_name',
           render: function (value) {
             return `<strong>${value}</strong>`
           }
-        },
-        {
-          name: 'Company',
-          key: 'company'
         }
       ],
       actions: [
@@ -98,14 +99,19 @@ export default {
     }
   },
   methods: {
+    getSource () {
+      axios.get(`https://reqres.in/api/users?per_page=${this.perpage}&page=${this.page}`).then((response) => {
+        this.information = response.data.data
+      })
+    },
     change (value) {
       this.page = value.page
       this.perpage = value.perpage
-      this.getData()
+      this.getSource()
     },
     searching (value) {
       this.search = value
-      this.getData()
+      this.getSource()
     }
   }
 }
@@ -115,6 +121,10 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @import "./assets/app.css";
 #app {
-  font-family: 'Roboto' !important
+  font-family: 'Roboto' !important;
+  margin: 150px 0;
+}
+.mb3 {
+  margin-bottom: 30px;
 }
 </style>
