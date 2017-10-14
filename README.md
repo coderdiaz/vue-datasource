@@ -1,8 +1,10 @@
 <p align="center">
-    <a href="https://github.com/coderdiaz/vue-datasource">
-        <img src="logotype.png" width="120">
-    </a>
     <h2 align="center">Vue Datasource</h2>
+</p>
+<p align="center">
+    <a href="https://github.com/coderdiaz/vue-datasource">
+        <img src="logotype.png" width="250">
+    </a>
 </p>
 
 <p align="center">
