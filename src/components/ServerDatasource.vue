@@ -1,6 +1,6 @@
 <script>
 import DatasourceUtils from '../utils/DatasourceUtils'
-import Pagination from './Pagination.vue'
+import Pagination from './Pagination'
 import {EventBus} from '../utils/EventBus'
 export default {
   name: 'ServerDatasource',
@@ -32,9 +32,6 @@ export default {
               </thead>
               <tbody>
                 {this.columnObjects}
-                <tr>
-                  <td class="text-center warning" colspan={this.columns.length}>{this.tableInfo}</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -43,7 +40,7 @@ export default {
               {this.actionsObject}
             </div>
             <div class="pull-right">
-              <pagination pages={this.pagination}></pagination>
+              <pagination total={this.total} per-page={this.perpage}></pagination>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -58,6 +55,14 @@ export default {
      */
     source: {
       type: Array,
+      required: true
+    },
+    /**
+     * Total of items
+     * @type {Number}
+     */
+    total: {
+      type: Number,
       required: true
     },
     /**
@@ -116,16 +121,10 @@ export default {
   data () {
     return {
       perpage: 10,
+      current_page: 1,
       selected: null, // row and Object selected on click event
       indexSelected: -1, // index row selected on click event
-      search: '', // word to search in the table,
-      pagination: {
-        total: 0,
-        to: 0,
-        from: 0,
-        per_page: 10,
-        current_page: 1
-      }
+      search: '' // word to search in the table,
     }
   },
   computed: {
@@ -166,8 +165,7 @@ export default {
           console.warn(`[VueDatasource] The callback show is not defined in action ${action.text}.`)
         }
       })
-    },
-    tableInfo: DatasourceUtils.tableInfo
+    }
   },
   methods: {
     fetchFromObject: DatasourceUtils.fetchFromObject,
@@ -182,7 +180,7 @@ export default {
     searching (e) {
       this.selected = null
       this.indexSelected = -1
-      this.pagination.current_page = 1
+      this.current_page = 1
       this.$emit('searching', e.target.value)
     }
   },
@@ -194,7 +192,7 @@ export default {
     perpage () {
       this.selected = null
       this.indexSelected = -1
-      this.pagination.current_page = 1
+      this.current_page = 1
       this.$emit('change', {perpage: this.perpage, page: 1})
     },
     source () {

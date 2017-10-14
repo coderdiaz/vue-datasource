@@ -13,7 +13,7 @@ export default {
     return (
       <div id="app">
         <h2 class="text-center mb3">Vue Datasource</h2>
-        <datasource source={this.information} limits={this.limits} actions={this.actions} columns={this.columns} on-change={this.change}></datasource>
+        <datasource source={this.information} total={this.total} limits={this.limits} actions={this.actions} columns={this.columns} on-change={this.change}></datasource>
       </div>
     )
   },
@@ -95,13 +95,15 @@ export default {
       page: 1,
       perpage: 10,
       pagination: {},
-      search: ''
+      search: '',
+      total: 0
     }
   },
   methods: {
     getSource () {
       axios.get(`https://reqres.in/api/users?per_page=${this.perpage}&page=${this.page}`).then((response) => {
         this.information = response.data.data
+        this.total = response.data.total
       })
     },
     change (value) {
