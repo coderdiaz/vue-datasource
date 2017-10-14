@@ -26,7 +26,7 @@ export default {
   changePage (page) {
     this.selected = null
     this.indexSelected = -1
-    this.pagination.current_page = page
+    this.current_page = page
     this.$emit('change', { perpage: this.perpage, page: page })
   },
 
@@ -51,49 +51,39 @@ export default {
   },
 
   /**
-   * Computed property: Building custom string information with translation
-   * @returns {String}
-   */
-  tableInfo () {
-    let labelShow = this.translation.pagination.show
-    let from = (this.pagination.from === null) ? 0 : this.pagination.from
-    let labelTo = this.translation.pagination.to
-    let to = (this.pagination.to === null) ? 0 : this.pagination.to
-    let labelOf = this.translation.pagination.of
-    let total = this.pagination.total
-    let labelEntries = this.translation.pagination.entries
-    return `${labelShow} ${from} ${labelTo} ${to} ${labelOf} ${total} ${labelEntries}`
-  },
-
-  /**
    * Computed property: Build custom array with the pagination items
    * @return Array
    */
   gettingItems () {
     let temp = []
-    let bottomLimit = this.pages.current_page - 2
-    let topLimit = this.pages.current_page + 2
+    let bottomLimit = this.currentPage - 2
+    let topLimit = this.currentPage + 2
     let showing = 5
     if (bottomLimit <= 0) {
       bottomLimit = 1
       topLimit = 5
     }
-    if (topLimit >= this.pages.last_page) {
-      bottomLimit = this.pages.last_page - 4
-      topLimit = this.pages.last_page
+    if (topLimit >= this.lastPage) {
+      bottomLimit = this.lastPage - 4
+      topLimit = this.lastPage
     }
-    if (this.pages.last_page < 5) {
-      showing = this.pages.last_page
+    if (this.lastPage < 5) {
+      showing = this.lastPage
     }
     if (bottomLimit <= 0) {
       bottomLimit = 1
     }
-    if (this.pages.last_page === 0 || this.pages.last_page === 1) {
+    if (this.lastPage === 0 || this.lastPage === 1) {
       showing = 1
     }
     for (let i = 0; i < showing; i++) {
       temp[i] = i + bottomLimit
     }
     return temp
+  },
+
+  roundNumber (value, precision) {
+    let multiplier = Math.pow(10, precision || 0)
+    return Math.round(value * multiplier) / multiplier
   }
 }
