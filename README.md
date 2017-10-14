@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://github.com/coderdiaz/vue-datasource">
-        <img src="logotype.png" width="250">
+        <img src="logo.png" width="270">
     </a>
 </p>
 
