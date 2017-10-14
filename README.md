@@ -19,9 +19,13 @@
 ---
 
 ### Demo
-!['Screenshot'](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/screenshot.png)
+<p align="center">
+    <img src="screenshot.png">
+</p>
 
 ### Install/Usage
+For use this package is necessary install [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx) dependency.
+
 ```
 $ npm install vue-datasource
 ```
@@ -29,7 +33,8 @@ $ npm install vue-datasource
 ```html
 <div id="#app">
     <server-datasource
-        source="api_url"
+        :source="items"
+        :total="total_of_items"
         :columns="columns"
         :actions="actions"></server-datasource>
 </div>
@@ -45,6 +50,8 @@ new Vue({
     },
     data() {
         return {
+            items: [...],
+            total: 100,
             columns: [...],
             actions: [...]
         }
@@ -55,33 +62,20 @@ new Vue({
 ## Documentation
 
 ### Available Props
-| Prop        | Type    | Default        | Description                                                 |
-|-------------|---------|----------------|-------------------------------------------------------------|
-| source      | String  |                | API Url to get data                                         |
+| Prop        | Type    | Default        | Description                                                                        |
+|-------------|---------|----------------|------------------------------------------------------------------------------------|
+| source      | Array   |                | Items to show in table                                                             |
+| total       | Number  |                | Total of items
 | translation | Object  | [Object]       | Defines the table labels language ([structure](#translation-structure))            |
-| limits      | Array   | [1,5,10,15,20] | Defines the limits to display                               |
-| columns     | Array   |                | Columns to display                                          |
-| actions     | Array   |                | Action buttons ([structure](#action-event-sctructure))      |
+| limits      | Array   | [1,5,10,15,20] | Defines the limits to display                                                      |
+| columns     | Array   |                | Columns to display                                                                 |
+| actions     | Array   |                | Action buttons ([structure](#action-event-sctructure))                             |
 
 ### Available Events
 | Event       | Description                                                                                         |
 |-------------|-----------------------------------------------------------------------------------------------------|
 | change      | Handle show limit changed. Gets object with new show limit and current page `{perpage: 10, page: 2}`|
 | searching   | Handles search input. Gets string as parameter                                                      |
-
-### Data API Example
-```javascript
-{
-    "pagination": {
-        "total": 0,
-        "to": 0,
-        "from": 0,
-        "per_page": 10,
-        "current_page": 1
-    },
-    "data": [...items]
-}
-```
 
 ### Columns
 Each column object needs `name` and `key` attributes.
@@ -113,7 +107,7 @@ Laravel users can access relationships through the `key` attribute. Lets say we 
 ]
 ```
 
-To get the user's role we would need to define in our columns array:
+To get the user role we would need to define in our columns array:
 ```javascript
 {
     ...,
@@ -129,6 +123,7 @@ To get the user's role we would need to define in our columns array:
 
 ### Render column
 This callback will modify the data for various operations. Such as applying a specific format or an arithmetic operation to the column value and return it.
+
 ```javascript
 {
     ...,
@@ -138,6 +133,23 @@ This callback will modify the data for various operations. Such as applying a sp
             key: 'name',
             render(value) { // Render callback
                 return `Enginner ${value}`;
+            }
+        }
+    ]
+}
+```
+
+**[New]** Now you can use JSX for render other templates and too use the row data.
+
+```javascript
+{
+    ...,
+    columns: [
+        {
+            name: 'Name',
+            key: 'key',
+            render (value, row) {
+                return <strong>{value}</strong>
             }
         }
     ]
