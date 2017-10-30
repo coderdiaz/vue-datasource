@@ -82,6 +82,46 @@ export default {
     return temp
   },
 
+  /**
+   * Function to $emit a sort event
+   * @param {Exception} e
+   * @param {String} key
+   * @return void
+   */
+  sortColumn (e, key) {
+    if (this.columnSortSelected.key === key) {
+      this.columnSortSelected.order = !this.columnSortSelected.order
+    } else {
+      this.columnSortSelected.order = false
+      this.columnSortSelected.key = key
+    }
+    this.$emit('column-sort', this.columnSortSelected)
+  },
+
+  /**
+   * Function to show up arrow
+   * @param {String} key
+   * @return Boolean
+   */
+  shouldShowUpArrow (key) {
+    return (this.columnSortSelected.key === key) && (this.columnSortSelected.order === true)
+  },
+
+  /**
+   * Function to show down arrow
+   * @param {String} key
+   * @return Boolean
+   */
+  shouldShowDownArrow (key) {
+    return (this.columnSortSelected.key === key) && (this.columnSortSelected.order === false)
+  },
+
+  /**
+   * Function to get a value rounded
+   * @param {Number} value
+   * @param {Number} precision
+   * @return Number
+   */
   roundNumber (value, precision) {
     let multiplier = Math.pow(10, precision || 0)
     return Math.round(value * multiplier) / multiplier
