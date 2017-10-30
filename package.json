@@ -1,6 +1,6 @@
 {
   "name": "vue-datasource",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "A vue server side component to create dynamic tables",
   "author": "Javier Diaz <coderdiaz@gmail.com>",
   "private": false,
