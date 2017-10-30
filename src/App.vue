@@ -23,11 +23,13 @@ export default {
       columns: [
         {
           name: 'Id',
-          key: 'id'
+          key: 'id',
+          order: true
         },
         {
           name: 'First Name',
-          key: 'first_name'
+          key: 'first_name',
+          order: true
         },
         {
           name: 'Last Name',

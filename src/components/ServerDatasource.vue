@@ -1,7 +1,9 @@
 <script>
-import DatasourceUtils from '../utils/DatasourceUtils'
+import DatasourceUtils from '@/utils/DatasourceUtils'
 import Pagination from './Pagination'
-import {EventBus} from '../utils/EventBus'
+import {EventBus} from '@/utils/EventBus'
+import IconAsc from '@/assets/icon-sort-asc.svg'
+import IconDesc from '@/assets/icon-sort-desc.svg'
 export default {
   name: 'ServerDatasource',
   components: {Pagination},
@@ -124,7 +126,11 @@ export default {
       current_page: 1,
       selected: null, // row and Object selected on click event
       indexSelected: -1, // index row selected on click event
-      search: '' // word to search in the table,
+      search: '', // word to search in the table,
+      columnSortSelected: { // Object to set a column sort data
+        key: null,
+        order: true
+      }
     }
   },
   computed: {
@@ -134,8 +140,24 @@ export default {
       })
     },
     columnItems () {
+      let showArrows = (key) => {
+        if (this.columnSortSelected.key) {
+          return (this.shouldShowUpArrow(key)) ? <img class="arrow-active" src={IconAsc} width="15"/>
+          : <img class="arrow-active" src={IconDesc} width="15"/>
+        } else {
+          return <img src={IconDesc} width="15"/>
+        }
+      }
+
       return this.columns.map((column, index) => {
-        return <th>{column.name}</th>
+        if (column.order) {
+          return <th class="vue-server-ordering" on-click={(e) => this.sortColumn(e, column.key)}>
+            {column.name}
+            <span class="vue-server-arrows">{showArrows(column.key)}</span>
+          </th>
+        } else {
+          return <th>{column.name}</th>
+        }
       })
     },
     columnObjects () {
@@ -182,7 +204,10 @@ export default {
       this.indexSelected = -1
       this.current_page = 1
       this.$emit('searching', e.target.value)
-    }
+    },
+    sortColumn: DatasourceUtils.sortColumn,
+    shouldShowUpArrow: DatasourceUtils.shouldShowUpArrow,
+    shouldShowDownArrow: DatasourceUtils.shouldShowDownArrow
   },
   watch: {
     /**
@@ -208,8 +233,29 @@ export default {
     position: relative;
     padding: 0;
   }
+  .vue-server-arrows {
+    position: absolute;
+    right: 5px;
+    top: 6px;
+  }
   table {
     margin-bottom: 0;
+    th {
+      position: relative;
+
+      &.vue-server-ordering {
+        cursor: pointer;
+
+        .vue-server-arrows {
+          img {
+            opacity: .3;
+            &.arrow-active {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
   }
   .panel-footer {
     .btn-group-actions {
