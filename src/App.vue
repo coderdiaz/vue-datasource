@@ -28,7 +28,8 @@ export default {
         },
         {
           name: 'First Name',
-          key: 'first_name'
+          key: 'first_name',
+          order: true
         },
         {
           name: 'Last Name',
