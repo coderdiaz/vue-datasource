@@ -95,7 +95,8 @@ export default {
       this.columnSortSelected.order = false
       this.columnSortSelected.key = key
     }
-    this.$emit('column-sort', this.columnSortSelected)
+    let sortType = (this.columnSortSelected.order) ? 'ASC' : 'DESC'
+    this.$emit('column-sort', { sort: this.columnSortSelected, type: sortType })
   },
 
   /**
