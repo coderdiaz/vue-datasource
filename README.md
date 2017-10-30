@@ -78,6 +78,7 @@ new Vue({
 |-------------|-----------------------------------------------------------------------------------------------------|
 | change      | Handle show limit changed. Gets object with new show limit and current page `{perpage: 10, page: 2}`|
 | searching   | Handles search input. Gets string as parameter                                                      |
+| column-sort | Only if `order` is defined in column array. Return the current column sorted with metadata ([Sort Column](#sort-column))
 
 ### Columns
 Each column object needs `name` and `key` attributes.
@@ -122,6 +123,31 @@ To get the user role we would need to define in our columns array:
 }
 ```
 
+### Sort column
+**[New]** You only need a `order` property in column defined for use this feature.
+```javascript
+{
+    ...,
+    columns: [
+        {
+            name: 'Name',
+            key: 'name',
+            order: true
+        }
+    ]
+}
+```
+
+This feature emit a event `column-sort` with this data object
+```javascript 
+{
+    sort: {
+        key: 'name',
+        order: false
+    },
+    type: 'DESC'
+}
+```
 
 ### Render column
 This callback will modify the data for various operations. Such as applying a specific format or an arithmetic operation to the column value and return it.
