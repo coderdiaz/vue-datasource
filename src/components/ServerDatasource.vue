@@ -2,8 +2,8 @@
 import DatasourceUtils from '@/utils/DatasourceUtils'
 import Pagination from './Pagination'
 import {EventBus} from '@/utils/EventBus'
-import IconAsc from '@/assets/icon-asc.png'
-import IconDesc from '@/assets/icon-desc.png'
+import IconAsc from '@/assets/icon-sort-asc.svg'
+import IconDesc from '@/assets/icon-sort-desc.svg'
 export default {
   name: 'ServerDatasource',
   components: {Pagination},
@@ -141,13 +141,17 @@ export default {
     },
     columnItems () {
       let showArrows = (key) => {
-        return (this.shouldShowUpArrow(key)) ? <img src={IconDesc} width="15"/>
-          : <img src={IconAsc} width="15"/>
+        if (this.columnSortSelected.key) {
+          return (this.shouldShowUpArrow(key)) ? <img class="arrow-active" src={IconAsc} width="15"/>
+          : <img class="arrow-active" src={IconDesc} width="15"/>
+        } else {
+          return <img src={IconDesc} width="15"/>
+        }
       }
 
       return this.columns.map((column, index) => {
         if (column.order) {
-          return <th on-click={(e) => this.sortColumn(e, column.key)}>
+          return <th class="vue-server-ordering" on-click={(e) => this.sortColumn(e, column.key)}>
             {column.name}
             <span class="vue-server-arrows">{showArrows(column.key)}</span>
           </th>
@@ -231,13 +235,26 @@ export default {
   }
   .vue-server-arrows {
     position: absolute;
-    right: 0;
+    right: 5px;
     top: 6px;
   }
   table {
     margin-bottom: 0;
     th {
       position: relative;
+
+      &.vue-server-ordering {
+        cursor: pointer;
+
+        .vue-server-arrows {
+          img {
+            opacity: .3;
+            &.arrow-active {
+              opacity: 1;
+            }
+          }
+        }
+      }
     }
   }
   .panel-footer {
