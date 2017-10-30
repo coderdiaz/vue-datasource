@@ -35,6 +35,7 @@
   ],
   "homepage": "https://github.com/coderdiaz/vue-datasource#readme",
   "dependencies": {
+    "axios": "^0.17.0",
     "vue": "^2.2.6"
   },
   "devDependencies": {
