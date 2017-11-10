@@ -257,3 +257,8 @@ All contributions are welcome send your PR and Issues.
 This is a open-source software licensed under the [MIT license](https://raw.githubusercontent.com/coderdiaz/vue-datasource/master/LICENSE)
 
 ##### Crafted by Javier Diaz. Translation by [itsuwaribito](https://github.com/itsuwaribito)
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/coderdiaz/vue-datasource/badge.svg?style=beer-square)](https://beerpay.io/coderdiaz/vue-datasource)  [![Beerpay](https://beerpay.io/coderdiaz/vue-datasource/make-wish.svg?style=flat-square)](https://beerpay.io/coderdiaz/vue-datasource?focus=wish)
