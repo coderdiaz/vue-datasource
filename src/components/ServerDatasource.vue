@@ -2,11 +2,10 @@
 import DatasourceUtils from '@/utils/DatasourceUtils'
 import Pagination from './Pagination'
 import {EventBus} from '@/utils/EventBus'
-import IconAsc from '@/assets/icon-sort-asc.svg'
-import IconDesc from '@/assets/icon-sort-desc.svg'
+import SvgIcon from '@/components/SvgIcon'
 export default {
   name: 'ServerDatasource',
-  components: {Pagination},
+  components: {Pagination, SvgIcon},
   render (h) {
     return (
       <div class="vue-server-datasource">
@@ -142,10 +141,16 @@ export default {
     columnItems () {
       let showArrows = (key) => {
         if (this.columnSortSelected.key) {
-          return (this.shouldShowUpArrow(key)) ? <img class="arrow-active" src={IconAsc} width="15"/>
-          : <img class="arrow-active" src={IconDesc} width="15"/>
+          return (this.shouldShowUpArrow(key)) ? <span class="icon-asc">
+            <SvgIcon/>
+          </span>
+          : <span class="icon-desc">
+            <SvgIcon/>
+          </span>
         } else {
-          return <img src={IconDesc} width="15"/>
+          return <span class="icon-desc">
+            <SvgIcon/>
+          </span>
         }
       }
 
@@ -268,13 +273,25 @@ export default {
     width: 100%;
     height: 100%;
     background: rgba(229, 229, 229, 0.5);
-    
+
     .v-spinner {
-      position: absolute; 
+      position: absolute;
       top: 50%;
       left: 50%;
       margin-left: -25px;
       margin-top: -50px;
+    }
+  }
+  .icon-asc,
+  .icon-desc {
+    svg {
+      fill: #a3a3a3;
+      width: 1em;
+    }
+  }
+  .icon-asc {
+    svg {
+      transform: rotate(180deg);
     }
   }
 }
