@@ -1,7 +1,7 @@
 {
   "name": "vue-datasource",
   "description": "A Vue.js server side component to create dynamic tables",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "author": "Javier Diaz <coderdiaz@gmail.com>",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot",
