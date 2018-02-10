@@ -84,6 +84,23 @@ export default {
         'btn_first': 'Primer',
         'btn_last': 'Últim'
       }
-    },  
+    },
+    // Brazilian Portuguese translation
+    'pt-BR': {
+      'table': {
+        'label_limits': 'Mostrar',
+        'label_search': 'Buscar',
+        'placeholder_search': 'Digite para pesquisar..',
+        'records_not_found': 'Nenhum registro encontrado'
+      },
+     'pagination': {
+       'label_show': 'Exibindo',
+       'label_to': 'até',
+       'label_of': 'de',
+       'label_entries': 'registros',
+       'btn_first': 'Primeira',
+       'btn_last': 'Última'
+      }
+    }  
   }
 }
