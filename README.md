@@ -16,7 +16,6 @@
     <a href="http://npmjs.com/package/vue-datasource"><img src="https://img.shields.io/npm/v/vue-datasource.svg?style=flat-square"></a>
     <a href="http://npmjs.com/package/vue-datasource"><img src="https://img.shields.io/npm/dm/vue-datasource.svg?style=flat-square"></a>
     <a href="https://www.paypal.me/coderdiaz"><img src="https://img.shields.io/badge/invite-coffee-red.svg?style=flat-square"></a>
-  <a href="https://beerpay.io/coderdiaz/vue-datasource"><img src="https://beerpay.io/coderdiaz/vue-datasource/badge.svg?style=flat-square" /></a>
 </p>
 
 ---
@@ -26,10 +25,9 @@
     <img src="screenshot.png">
 </p>
 
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
+### Donate
 
-[![Beerpay](https://beerpay.io/coderdiaz/vue-datasource/badge.svg?style=beer-square)](https://beerpay.io/coderdiaz/vue-datasource)  [![Beerpay](https://beerpay.io/coderdiaz/vue-datasource/make-wish.svg?style=flat-square)](https://beerpay.io/coderdiaz/vue-datasource?focus=wish)
+<a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/coderdiaz"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:5px">Buy me a coffee</span></a>
 
 ### Install/Usage
 For use this package is necessary install [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx) dependency.
