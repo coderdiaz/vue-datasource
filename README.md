@@ -1,3 +1,5 @@
+⚠️No longer maintained, the package is deprecated.
+
 <p align="center">
     <a href="https://github.com/coderdiaz/vue-datasource">
         <img src="logo.png" width="120">
