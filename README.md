@@ -1,4 +1,4 @@
-⚠️No longer maintained, the package is deprecated.
+[WIP] Vue Datasource go back renew. Coming soon V3.
 
 <p align="center">
     <a href="https://github.com/coderdiaz/vue-datasource">
