@@ -1,0 +1,76 @@
+{
+  "name": "vue-datasource",
+  "version": "0.3.0",
+  "description": "A Vue component to create dynamic tables",
+  "license": "MIT",
+  "private": false,
+  "plugin": {
+    "name": "VueDatasource",
+    "entryFile": "./index.js"
+  },
+  "author": {
+    "name": "Javier Diaz Chamorro",
+    "email": "hello@coderdiaz.me",
+    "url": "https://github.com/coderdiaz"
+  },
+  "scripts": {
+    "build": "rimraf dist && rollup -c --environment BUILD:production",
+    "prepare": "yarn lint && yarn test:unit && yarn build",
+    "lint": "eslint -c .eslintrc.js . --ext .js,.vue",
+    "test:unit": "jest -c"
+  },
+  "style": "dist/vue-datasource.css",
+  "main": "dist/vue-datasource.cjs.js",
+  "module": "dist/vue-datasource.esm.js",
+  "unpkg": "dist/vue-datasource.js",
+  "jsdelivr": "dist/vue-datasource.js",
+  "cdn": "dist/vue-datasource.js",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderdiaz/vue-datasource.git"
+  },
+  "bugs": {
+    "url": "https://github.com/coderdiaz/vue-datasource/issues"
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vue-component",
+    "component",
+    "vue.js",
+    "vue-datasource",
+    "table",
+    "vue-table",
+    "datatable",
+    "tables"
+  ],
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "jest": "^24.8.0",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^2.0.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.16.3",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.0.0",
+    "rollup-plugin-vue": "^5.0.1",
+    "vue-jest": "^3.0.4",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}

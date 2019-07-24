@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+yarn-error.log
+npm-debug.log
+.DS_Store
+
+# Editor directories
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
